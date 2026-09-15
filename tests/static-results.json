@@ -1,0 +1,355 @@
+{
+  "suite": "Static source and HTTP delivery",
+  "executedAt": "2026-09-15T17:01:52Z",
+  "passed": 24,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "JavaScript syntax: app.js",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "JavaScript syntax: dynamics.js",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "JavaScript syntax: gl.js",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "JavaScript syntax: kinematics.js",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "JavaScript syntax: math.js",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "JavaScript syntax: model.js",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "JavaScript syntax: navigation.js",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "JavaScript syntax: sensors.js",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "JavaScript syntax: simulation.js",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "JavaScript syntax: view.js",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "JavaScript syntax: world.js",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Local page assets and links: index.html",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "No external page assets: index.html",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "Classic local scripts: index.html",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Local page assets and links: simulator/index.html",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "No external page assets: simulator/index.html",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "Classic local scripts: simulator/index.html",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Local Markdown references resolve",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "Text files are valid UTF-8",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "No redistributed font binaries",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Pages root and simulator bypass Jekyll",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Pages workflow publishes static simulator and runs core regression",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Pages artifact root: HTTP 200, matching bytes and executable MIME",
+      "status": "PASS",
+      "detail": [
+        {
+          "path": "index.html",
+          "status": 200,
+          "mime": "text/html",
+          "bytes": 24033,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "js/app.js",
+          "status": 200,
+          "mime": "text/javascript",
+          "bytes": 24155,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "js/dynamics.js",
+          "status": 200,
+          "mime": "text/javascript",
+          "bytes": 3915,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "js/gl.js",
+          "status": 200,
+          "mime": "text/javascript",
+          "bytes": 17266,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "js/kinematics.js",
+          "status": 200,
+          "mime": "text/javascript",
+          "bytes": 3587,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "js/math.js",
+          "status": 200,
+          "mime": "text/javascript",
+          "bytes": 3426,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "js/model.js",
+          "status": 200,
+          "mime": "text/javascript",
+          "bytes": 10357,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "js/navigation.js",
+          "status": 200,
+          "mime": "text/javascript",
+          "bytes": 14274,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "js/sensors.js",
+          "status": 200,
+          "mime": "text/javascript",
+          "bytes": 7333,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "js/simulation.js",
+          "status": 200,
+          "mime": "text/javascript",
+          "bytes": 11552,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "js/view.js",
+          "status": 200,
+          "mime": "text/javascript",
+          "bytes": 10567,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "js/world.js",
+          "status": 200,
+          "mime": "text/javascript",
+          "bytes": 7001,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "css/app.css",
+          "status": 200,
+          "mime": "text/css",
+          "bytes": 24822,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "assets/favicon.svg",
+          "status": 200,
+          "mime": "image/svg+xml",
+          "bytes": 284,
+          "matches": true,
+          "mime_ok": true
+        }
+      ]
+    },
+    {
+      "name": "Repository subdirectory: HTTP 200, matching bytes and executable MIME",
+      "status": "PASS",
+      "detail": [
+        {
+          "path": "index.html",
+          "status": 200,
+          "mime": "text/html",
+          "bytes": 24033,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "js/app.js",
+          "status": 200,
+          "mime": "text/javascript",
+          "bytes": 24155,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "js/dynamics.js",
+          "status": 200,
+          "mime": "text/javascript",
+          "bytes": 3915,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "js/gl.js",
+          "status": 200,
+          "mime": "text/javascript",
+          "bytes": 17266,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "js/kinematics.js",
+          "status": 200,
+          "mime": "text/javascript",
+          "bytes": 3587,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "js/math.js",
+          "status": 200,
+          "mime": "text/javascript",
+          "bytes": 3426,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "js/model.js",
+          "status": 200,
+          "mime": "text/javascript",
+          "bytes": 10357,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "js/navigation.js",
+          "status": 200,
+          "mime": "text/javascript",
+          "bytes": 14274,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "js/sensors.js",
+          "status": 200,
+          "mime": "text/javascript",
+          "bytes": 7333,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "js/simulation.js",
+          "status": 200,
+          "mime": "text/javascript",
+          "bytes": 11552,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "js/view.js",
+          "status": 200,
+          "mime": "text/javascript",
+          "bytes": 10567,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "js/world.js",
+          "status": 200,
+          "mime": "text/javascript",
+          "bytes": 7001,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "css/app.css",
+          "status": 200,
+          "mime": "text/css",
+          "bytes": 24822,
+          "matches": true,
+          "mime_ok": true
+        },
+        {
+          "path": "assets/favicon.svg",
+          "status": 200,
+          "mime": "image/svg+xml",
+          "bytes": 284,
+          "matches": true,
+          "mime_ok": true
+        }
+      ]
+    }
+  ],
+  "scope": "Loopback Python HTTP delivery is verified. Managed-browser file/HTTP navigation and remote GitHub Pages deployment are not verified."
+}

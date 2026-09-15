@@ -1,0 +1,80 @@
+{
+  "version": "1.1.1",
+  "localBase": "user-provided smart-cart-autonomy-lab-1.1.0.zip",
+  "baseZipSha256": "b7372c26f356a3d28bd031feb9b0433f7d61869187b7bb76db6ec0b95430c310",
+  "remoteRepositoryModified": false,
+  "remotePagesDeployed": false,
+  "unchangedRuntimeFiles": [
+    "gl.js",
+    "math.js",
+    "world.js"
+  ],
+  "changedOrNewRuntimeFiles": [
+    "app.js",
+    "dynamics.js",
+    "kinematics.js",
+    "model.js",
+    "navigation.js",
+    "sensors.js",
+    "simulation.js",
+    "view.js"
+  ],
+  "cartHardwareConstructionUnchanged": true,
+  "runtimeHashes": {
+    "app.js": {
+      "baseSha256": "153c50ebb350ef6916b9cd441efedbcde48309fb967ef157d15b0c09c8649ae2",
+      "releaseSha256": "b3bf1fff2de1cdc46d80f8717d4fc81b4fe4b71c877e055b106b4fa2173d85f0",
+      "unchanged": false
+    },
+    "dynamics.js": {
+      "baseSha256": null,
+      "releaseSha256": "8be37da78efe93bba08d4c44f3fc463ee4db7be84e7fab6ae53ef0d392d8fd2d",
+      "unchanged": false
+    },
+    "gl.js": {
+      "baseSha256": "cfb159ce13faf88945156844be822f533a819c02742c9c3706ce4c8580ec80ed",
+      "releaseSha256": "cfb159ce13faf88945156844be822f533a819c02742c9c3706ce4c8580ec80ed",
+      "unchanged": true
+    },
+    "kinematics.js": {
+      "baseSha256": null,
+      "releaseSha256": "cae1bc2f46c25c9dabbd79569bc72301398d18d74aec4f8c3b2c3ce84b999e11",
+      "unchanged": false
+    },
+    "math.js": {
+      "baseSha256": "c27f7319a92479e075287964f8659f504ae910a11a9feac2c50d6acc1c1d654a",
+      "releaseSha256": "c27f7319a92479e075287964f8659f504ae910a11a9feac2c50d6acc1c1d654a",
+      "unchanged": true
+    },
+    "model.js": {
+      "baseSha256": "fe6ed31938ab7b9cb6c4dc4954d0a735dae8cf6aeef197fd7acab6e57993bf28",
+      "releaseSha256": "9b76a87916f4998668ac217aada3ca15438b37ed338b8577e32c4bf209671ce4",
+      "unchanged": false
+    },
+    "navigation.js": {
+      "baseSha256": "88d7609cd89e5ccbc0a1b0713a279ae787e324389df56821d0866db2a2c83782",
+      "releaseSha256": "0c2abbf43a166b90bc5c69076c59a655e4b84302603510586c3558db8a3963e4",
+      "unchanged": false
+    },
+    "sensors.js": {
+      "baseSha256": "39283dfca06fa679adc13beaa3c47019879dee7567f0a63132d1ac568c1991e0",
+      "releaseSha256": "1bdd8c845a98eaff1f40614cb51f7047a7e6262ae4b584f34cbb2303d5116cc7",
+      "unchanged": false
+    },
+    "simulation.js": {
+      "baseSha256": "f3f18411ea77d81c8fa1daf459c887c25e4f726d31fb1adb002f96122ba10e1c",
+      "releaseSha256": "f86af2a7028c6f2a99094f81ce6d97eb3ef33b63e92b65b4ac05d1aa923c1209",
+      "unchanged": false
+    },
+    "view.js": {
+      "baseSha256": "6ffaf1edcec0cf5ab3a4e1d17df4d381cc0b2ce6fbfc2e9473b88ec2e4f014e9",
+      "releaseSha256": "0c455b0ae5cbe092908e78df69f803bf1b07c83b16d92e81d84e71d81e0fca8a",
+      "unchanged": false
+    },
+    "world.js": {
+      "baseSha256": "2781466e26c4048a04970ea9fa509c8ac11589e89b88e68637dd851e944c3b6c",
+      "releaseSha256": "2781466e26c4048a04970ea9fa509c8ac11589e89b88e68637dd851e944c3b6c",
+      "unchanged": true
+    }
+  }
+}

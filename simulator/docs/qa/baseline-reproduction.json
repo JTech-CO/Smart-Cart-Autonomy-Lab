@@ -1,0 +1,42 @@
+{
+  "version": "1.1.0",
+  "rows": [
+    {
+      "issue": "screen-left",
+      "actualWorld": {
+        "x": -1,
+        "z": 0
+      },
+      "expectedWorld": {
+        "x": 1,
+        "z": 0
+      }
+    },
+    {
+      "issue": "orbit-drag",
+      "rightDragAzimuth": -0.6,
+      "upDragElevation": 0.3,
+      "expected": "azimuth +0.6, elevation +0.3 from start"
+    },
+    {
+      "issue": "side-user",
+      "status": "HOLD_DISTANCE",
+      "command": {
+        "speed": 0,
+        "steer": 0,
+        "brake": true
+      }
+    },
+    {
+      "issue": "slope-neutral-gravity",
+      "speed": 0,
+      "displacement": 0,
+      "expected": "negative velocity and displacement without parking brake"
+    },
+    {
+      "issue": "feet-on-slope",
+      "minimumMeshClearance_m": -0.010189237725894529,
+      "expected": "no below-ground leg or shoe vertices"
+    }
+  ]
+}

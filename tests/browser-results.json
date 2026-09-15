@@ -1,0 +1,466 @@
+{
+  "suite": "Browser UI and WebGL regression",
+  "version": "1.1.1",
+  "executedAt": "2026-09-15T16:46:27Z",
+  "mode": "about:blank with unchanged local source contents injected by Playwright",
+  "browser": "144.0.7559.96",
+  "gpu": {
+    "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "triangles": 87370,
+    "draws": 172,
+    "error": 0
+  },
+  "passed": 57,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "Actual WebGL 2 scene and shader rendering",
+      "status": "PASS",
+      "detail": {
+        "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "triangles": 87370,
+        "draws": 172,
+        "error": 0
+      }
+    },
+    {
+      "name": "Version appears in document and interface",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Light-only interface with explicit light color scheme",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "No duplicate document IDs",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Primary viewport receives most workspace width",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "No UI chrome overlays the 3D canvas",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Diagnostics are initially collapsed without hiding current data",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Motor readings use a semantic table",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Visible essential text is at least 14 CSS px",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "Arrow keys move the user",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Canvas Space pauses and freezes time",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Focused pause button Space resumes once",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Focused pause button Space pauses once",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "E-stop latch stops motor and wheel simulation",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Camera selector operates real model-detail camera",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Lighting works independently of white UI: sun",
+      "status": "PASS",
+      "detail": {
+        "mean": 176.06999999999996,
+        "error": 0,
+        "theme": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "name": "Lighting works independently of white UI: artificial",
+      "status": "PASS",
+      "detail": {
+        "mean": 214.00166666666678,
+        "error": 0,
+        "theme": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "name": "Lighting works independently of white UI: low",
+      "status": "PASS",
+      "detail": {
+        "mean": 59.840833333333514,
+        "error": 0,
+        "theme": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "name": "Low-light environment actually changes rendered luminance",
+      "status": "PASS",
+      "detail": {
+        "sun": 176.06999999999996,
+        "artificial": 214.00166666666678,
+        "low": 59.840833333333514
+      }
+    },
+    {
+      "name": "Settings is a native modal and pauses the session",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Settings interaction cannot move the background simulation",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Solar-angle field still updates the live scene configuration",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Applying settings rebuilds matching terrain and objects",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Escape closes settings and restores button focus without resuming",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Advanced sensor fields remain discoverable",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Terrain menu retains stair stop without wheel spin",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "UWB fault injection retains stop behavior",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "LiDAR disclosure opens real point cloud and chart",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "ToF chart has millimeter labels and millimeter-scaled history",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Invalid measurements display missing instead of zero",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Left/right graph labels are explicit and have line-style cues",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Export popover Escape closes and returns focus",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "CSV export retains numeric sensor and motor history",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Flutter JSON retains synthetic source and null cliff",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Configuration export retains schema",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Session export preserves samples and simulation disclosure",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "3D PNG export produces actual image data",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "All five export types complete native file save",
+      "status": "PASS",
+      "detail": {
+        "csv": {
+          "saved": true,
+          "bytes": 17186
+        },
+        "telemetry": {
+          "saved": true,
+          "bytes": 4377
+        },
+        "config": {
+          "saved": true,
+          "bytes": 646
+        },
+        "session": {
+          "saved": true,
+          "bytes": 108020
+        },
+        "png": {
+          "saved": true,
+          "bytes": 957253
+        }
+      }
+    },
+    {
+      "name": "JSON import changes the real world configuration",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Invalid import does not replace the valid scene",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Focus loss pauses and clears user input",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Readable model dialog preserves safety limitations",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Help dismissal does not restart the simulation",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Resets release superseded GPU geometry",
+      "status": "PASS",
+      "detail": [
+        172,
+        172,
+        172
+      ]
+    },
+    {
+      "name": "Readable responsive layout 1600px",
+      "status": "PASS",
+      "detail": {
+        "w": 1600,
+        "scroll": 1600,
+        "canvasWidth": 1208,
+        "canvasHeight": 575,
+        "estop": true
+      }
+    },
+    {
+      "name": "Readable responsive layout 1366px",
+      "status": "PASS",
+      "detail": {
+        "w": 1366,
+        "scroll": 1366,
+        "canvasWidth": 974,
+        "canvasHeight": 343,
+        "estop": true
+      }
+    },
+    {
+      "name": "Readable responsive layout 1024px",
+      "status": "PASS",
+      "detail": {
+        "w": 1024,
+        "scroll": 1024,
+        "canvasWidth": 648,
+        "canvasHeight": 280.40625,
+        "estop": true
+      }
+    },
+    {
+      "name": "Readable responsive layout 820px",
+      "status": "PASS",
+      "detail": {
+        "w": 820,
+        "scroll": 820,
+        "canvasWidth": 820,
+        "canvasHeight": 451,
+        "estop": true
+      }
+    },
+    {
+      "name": "Readable responsive layout 600px",
+      "status": "PASS",
+      "detail": {
+        "w": 600,
+        "scroll": 600,
+        "canvasWidth": 600,
+        "canvasHeight": 440,
+        "estop": true
+      }
+    },
+    {
+      "name": "Readable responsive layout 390px",
+      "status": "PASS",
+      "detail": {
+        "w": 390,
+        "scroll": 390,
+        "canvasWidth": 390,
+        "canvasHeight": 351,
+        "estop": true
+      }
+    },
+    {
+      "name": "Readable responsive layout 320px",
+      "status": "PASS",
+      "detail": {
+        "w": 320,
+        "scroll": 320,
+        "canvasWidth": 320,
+        "canvasHeight": 340,
+        "estop": true
+      }
+    },
+    {
+      "name": "Mobile controls are real visible buttons",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Touch direction button moves user and releases input",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Pointer release clears touch movement",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Mobile native dialog fits viewport",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "No JS or WebGL errors during component regression",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "No external runtime asset requests",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "nativeDownloads": {
+    "csv": {
+      "saved": true,
+      "bytes": 17186
+    },
+    "telemetry": {
+      "saved": true,
+      "bytes": 4377
+    },
+    "config": {
+      "saved": true,
+      "bytes": 646
+    },
+    "session": {
+      "saved": true,
+      "bytes": 108020
+    },
+    "png": {
+      "saved": true,
+      "bytes": 957253
+    }
+  },
+  "layouts": [
+    {
+      "w": 1600,
+      "scroll": 1600,
+      "canvasWidth": 1208,
+      "canvasHeight": 575,
+      "estop": true
+    },
+    {
+      "w": 1366,
+      "scroll": 1366,
+      "canvasWidth": 974,
+      "canvasHeight": 343,
+      "estop": true
+    },
+    {
+      "w": 1024,
+      "scroll": 1024,
+      "canvasWidth": 648,
+      "canvasHeight": 280.40625,
+      "estop": true
+    },
+    {
+      "w": 820,
+      "scroll": 820,
+      "canvasWidth": 820,
+      "canvasHeight": 451,
+      "estop": true
+    },
+    {
+      "w": 600,
+      "scroll": 600,
+      "canvasWidth": 600,
+      "canvasHeight": 440,
+      "estop": true
+    },
+    {
+      "w": 390,
+      "scroll": 390,
+      "canvasWidth": 390,
+      "canvasHeight": 351,
+      "estop": true
+    },
+    {
+      "w": 320,
+      "scroll": 320,
+      "canvasWidth": 320,
+      "canvasHeight": 340,
+      "estop": true
+    }
+  ],
+  "limits": "Default mode does not verify browser file/HTTP navigation, remote Pages deployment, real-device GPU performance or physical cart behavior."
+}

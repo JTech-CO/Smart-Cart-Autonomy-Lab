@@ -1,0 +1,358 @@
+{
+  "suite": "1.1.1 five-defect regression",
+  "version": "1.1.1",
+  "node": "v22.16.0",
+  "executedAt": "2026-09-15T17:01:50.869Z",
+  "passed": 43,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "Screen-relative cardinal/diagonal directions at orbit -180 deg",
+      "status": "PASS",
+      "ms": 1,
+      "detail": null
+    },
+    {
+      "name": "Screen-relative cardinal/diagonal directions at orbit -135 deg",
+      "status": "PASS",
+      "ms": 0,
+      "detail": null
+    },
+    {
+      "name": "Screen-relative cardinal/diagonal directions at orbit -90 deg",
+      "status": "PASS",
+      "ms": 0,
+      "detail": null
+    },
+    {
+      "name": "Screen-relative cardinal/diagonal directions at orbit -45 deg",
+      "status": "PASS",
+      "ms": 0,
+      "detail": null
+    },
+    {
+      "name": "Screen-relative cardinal/diagonal directions at orbit 0 deg",
+      "status": "PASS",
+      "ms": 0,
+      "detail": null
+    },
+    {
+      "name": "Screen-relative cardinal/diagonal directions at orbit 45 deg",
+      "status": "PASS",
+      "ms": 1,
+      "detail": null
+    },
+    {
+      "name": "Screen-relative cardinal/diagonal directions at orbit 90 deg",
+      "status": "PASS",
+      "ms": 0,
+      "detail": null
+    },
+    {
+      "name": "Screen-relative cardinal/diagonal directions at orbit 135 deg",
+      "status": "PASS",
+      "ms": 0,
+      "detail": null
+    },
+    {
+      "name": "Drag signs, focus, active pointer ownership and cancellation",
+      "status": "PASS",
+      "ms": 0,
+      "detail": null
+    },
+    {
+      "name": "UWB acquired track crosses both lateral FoV boundaries, noise 0",
+      "status": "PASS",
+      "ms": 274,
+      "detail": {
+        "maxError_m": 0.04426470738749748,
+        "maxAge_s": 0.040000000000000924,
+        "rangeOnlySamples": 399
+      }
+    },
+    {
+      "name": "UWB acquired track crosses both lateral FoV boundaries, noise 1",
+      "status": "PASS",
+      "ms": 197,
+      "detail": {
+        "maxError_m": 0.14150076661450908,
+        "maxAge_s": 0.040000000000000924,
+        "rangeOnlySamples": 399
+      }
+    },
+    {
+      "name": "UWB acquired track crosses both lateral FoV boundaries, noise 2",
+      "status": "PASS",
+      "ms": 189,
+      "detail": {
+        "maxError_m": 0.146736055359409,
+        "maxAge_s": 0.10000000000000142,
+        "rangeOnlySamples": 390
+      }
+    },
+    {
+      "name": "Slant-range projection uses the estimated terrain height, not a fixed flat height",
+      "status": "PASS",
+      "ms": 19,
+      "detail": null
+    },
+    {
+      "name": "Acquired left near-side user triggers safe repositioning",
+      "status": "PASS",
+      "ms": 227,
+      "detail": {
+        "displacement_m": 0.9201539790792584,
+        "heading_deg": 55.70156103687662,
+        "contacts": 0
+      }
+    },
+    {
+      "name": "Acquired right near-side user triggers safe repositioning",
+      "status": "PASS",
+      "ms": 177,
+      "detail": {
+        "displacement_m": 0.9279989053945539,
+        "heading_deg": -56.219609434227614,
+        "contacts": 0
+      }
+    },
+    {
+      "name": "A user leaving the near-side position continues to be tracked",
+      "status": "PASS",
+      "ms": 241,
+      "detail": {
+        "cartDisplacement_m": 1.604609662669966,
+        "trackingMode": "range_history"
+      }
+    },
+    {
+      "name": "Acquired rear target x=-2 is approached with correct reverse curvature and held",
+      "status": "PASS",
+      "ms": 298,
+      "detail": {
+        "minSpeed_mps": -0.2628416312175283,
+        "maxSpeed_mps": 0,
+        "spacing_m": 2.37799804594792,
+        "gearChangeTicks": 0
+      }
+    },
+    {
+      "name": "Acquired rear target x=0 is approached with correct reverse curvature and held",
+      "status": "PASS",
+      "ms": 267,
+      "detail": {
+        "minSpeed_mps": -0.2628416312175283,
+        "maxSpeed_mps": 0,
+        "spacing_m": 2.376655695570062,
+        "gearChangeTicks": 0
+      }
+    },
+    {
+      "name": "Acquired rear target x=2 is approached with correct reverse curvature and held",
+      "status": "PASS",
+      "ms": 268,
+      "detail": {
+        "minSpeed_mps": -0.2628416312175283,
+        "maxSpeed_mps": 0,
+        "spacing_m": 2.37799804594792,
+        "gearChangeTicks": 0
+      }
+    },
+    {
+      "name": "Close forward target causes low-speed reverse separation instead of permanent radial hold",
+      "status": "PASS",
+      "ms": 158,
+      "detail": null
+    },
+    {
+      "name": "Forward-to-reverse change commands braking before negative drive",
+      "status": "PASS",
+      "ms": 62,
+      "detail": null
+    },
+    {
+      "name": "Reverse swept-body collision check rejects an observed rear obstacle",
+      "status": "PASS",
+      "ms": 3,
+      "detail": null
+    },
+    {
+      "name": "Reverse trajectory respects the known rear map boundary",
+      "status": "PASS",
+      "ms": 3,
+      "detail": null
+    },
+    {
+      "name": "Initial rear ranges still do not fabricate a bearing or start blind reverse",
+      "status": "PASS",
+      "ms": 3,
+      "detail": null
+    },
+    {
+      "name": "Actual shoe/calf meshes clear flat across gait phases, headings and slope breaks",
+      "status": "PASS",
+      "ms": 310,
+      "detail": {
+        "poses": 576,
+        "minimumClearance_m": 0.006000000000000005,
+        "maximumBoneLengthError_m": 4.996003610813204e-16
+      }
+    },
+    {
+      "name": "Actual shoe/calf meshes clear uphill across gait phases, headings and slope breaks",
+      "status": "PASS",
+      "ms": 312,
+      "detail": {
+        "poses": 576,
+        "minimumClearance_m": 0.005992215981462157,
+        "maximumBoneLengthError_m": 9.43689570931383e-16
+      }
+    },
+    {
+      "name": "Actual shoe/calf meshes clear downhill across gait phases, headings and slope breaks",
+      "status": "PASS",
+      "ms": 323,
+      "detail": {
+        "poses": 576,
+        "minimumClearance_m": 0.005992215981462101,
+        "maximumBoneLengthError_m": 8.326672684688674e-16
+      }
+    },
+    {
+      "name": "Actual shoe/calf meshes clear rolling across gait phases, headings and slope breaks",
+      "status": "PASS",
+      "ms": 300,
+      "detail": {
+        "poses": 576,
+        "minimumClearance_m": 0.005984581049090609,
+        "maximumBoneLengthError_m": 6.661338147750939e-16
+      }
+    },
+    {
+      "name": "Actual shoe/calf meshes clear stairs across gait phases, headings and slope breaks",
+      "status": "PASS",
+      "ms": 155,
+      "detail": {
+        "poses": 256,
+        "minimumClearance_m": 0.0018063470273685933,
+        "maximumBoneLengthError_m": 6.106226635438361e-16
+      }
+    },
+    {
+      "name": "Stationary feet do not keep swinging after pedestrian movement stops",
+      "status": "PASS",
+      "ms": 8,
+      "detail": null
+    },
+    {
+      "name": "Tagged user and autonomous pedestrians share the same terrain-referenced rendering",
+      "status": "PASS",
+      "ms": 5,
+      "detail": null
+    },
+    {
+      "name": "Unpowered and unbraked cart accelerates down uphill",
+      "status": "PASS",
+      "ms": 2,
+      "detail": {
+        "speed_mps": -1.097916506531204,
+        "displacement_m": -0.5441696183356353,
+        "acceleration_mps2": -1.0935413425077467,
+        "gravity_N": -66.89911790049385
+      }
+    },
+    {
+      "name": "Unpowered and unbraked cart accelerates down downhill",
+      "status": "PASS",
+      "ms": 5,
+      "detail": {
+        "speed_mps": 1.097916506531204,
+        "displacement_m": 0.5441696183356353,
+        "acceleration_mps2": 1.0935413425077467,
+        "gravity_N": 66.89911790049385
+      }
+    },
+    {
+      "name": "Flat, unpowered, unbraked rest does not spontaneously accelerate",
+      "status": "PASS",
+      "ms": 5,
+      "detail": null
+    },
+    {
+      "name": "An uphill coasting cart stops and rolls back instead of being clamped at zero",
+      "status": "PASS",
+      "ms": 5,
+      "detail": null
+    },
+    {
+      "name": "Gravity and pitch signs reverse when the vehicle faces downhill",
+      "status": "PASS",
+      "ms": 4,
+      "detail": null
+    },
+    {
+      "name": "Cross-slope support tilts the cart without inventing longitudinal gravity",
+      "status": "PASS",
+      "ms": 2,
+      "detail": null
+    },
+    {
+      "name": "Equivalent wheel rotational inertia is included in force balance",
+      "status": "PASS",
+      "ms": 2,
+      "detail": {
+        "mass_kg": 49,
+        "effectiveMass_kg": 53.02148233900041
+      }
+    },
+    {
+      "name": "Payload changes acceleration under the same controller and drive response",
+      "status": "PASS",
+      "ms": 3,
+      "detail": {
+        "unloadedSpeed_mps": 0.05896781427772682,
+        "loadedSpeed_mps": 0.004514640465273338
+      }
+    },
+    {
+      "name": "A grade transition is not canceled instantly by exact force feed-forward",
+      "status": "PASS",
+      "ms": 8,
+      "detail": {
+        "flatAcceleration_mps2": -0.006881133436700271,
+        "uphillEntryAcceleration_mps2": -1.2670290998146316
+      }
+    },
+    {
+      "name": "Finite service braking gives longer downhill stopping travel than uphill",
+      "status": "PASS",
+      "ms": 5,
+      "detail": {
+        "uphill": {
+          "distance": 0.1053685977085248,
+          "time": 0.25
+        },
+        "flat": {
+          "distance": 0.16436346136168112,
+          "time": 0.36666666666666664
+        },
+        "downhill": {
+          "distance": 0.3310133459400424,
+          "time": 0.7166666666666667
+        }
+      }
+    },
+    {
+      "name": "Commanded parking brake holds a loaded 8-degree incline in both directions",
+      "status": "PASS",
+      "ms": 8,
+      "detail": null
+    },
+    {
+      "name": "Signed reverse and slope dynamics are retained in CSV capture and Flutter extension",
+      "status": "PASS",
+      "ms": 2,
+      "detail": null
+    }
+  ]
+}

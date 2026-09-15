@@ -1,0 +1,215 @@
+{
+  "suite": "1.1.1 five-defect browser regression",
+  "version": "1.1.1",
+  "executedAt": "2026-09-15T16:58:30Z",
+  "browser": "144.0.7559.96",
+  "mode": "about:blank source injection; not URL-entry E2E",
+  "passed": 30,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "ArrowLeft moves in its screen direction at orbit 0 deg",
+      "status": "PASS",
+      "detail": {
+        "pixels": -21.71404421928571
+      }
+    },
+    {
+      "name": "ArrowRight moves in its screen direction at orbit 0 deg",
+      "status": "PASS",
+      "detail": {
+        "pixels": 39.08527959471428
+      }
+    },
+    {
+      "name": "ArrowUp moves in its screen direction at orbit 0 deg",
+      "status": "PASS",
+      "detail": {
+        "pixels": -21.240125096765695
+      }
+    },
+    {
+      "name": "ArrowDown moves in its screen direction at orbit 0 deg",
+      "status": "PASS",
+      "detail": {
+        "pixels": 25.86490768183353
+      }
+    },
+    {
+      "name": "ArrowLeft moves in its screen direction at orbit 90 deg",
+      "status": "PASS",
+      "detail": {
+        "pixels": -32.57106632892868
+      }
+    },
+    {
+      "name": "ArrowRight moves in its screen direction at orbit 90 deg",
+      "status": "PASS",
+      "detail": {
+        "pixels": 26.056853063142967
+      }
+    },
+    {
+      "name": "ArrowUp moves in its screen direction at orbit 90 deg",
+      "status": "PASS",
+      "detail": {
+        "pixels": -17.82331227149311
+      }
+    },
+    {
+      "name": "ArrowDown moves in its screen direction at orbit 90 deg",
+      "status": "PASS",
+      "detail": {
+        "pixels": 17.835192200018128
+      }
+    },
+    {
+      "name": "ArrowLeft moves in its screen direction at orbit 180 deg",
+      "status": "PASS",
+      "detail": {
+        "pixels": -34.74247075085714
+      }
+    },
+    {
+      "name": "ArrowRight moves in its screen direction at orbit 180 deg",
+      "status": "PASS",
+      "detail": {
+        "pixels": 32.57106632892851
+      }
+    },
+    {
+      "name": "ArrowUp moves in its screen direction at orbit 180 deg",
+      "status": "PASS",
+      "detail": {
+        "pixels": -18.967522971602733
+      }
+    },
+    {
+      "name": "ArrowDown moves in its screen direction at orbit 180 deg",
+      "status": "PASS",
+      "detail": {
+        "pixels": 19.15679046459104
+      }
+    },
+    {
+      "name": "ArrowLeft moves in its screen direction at orbit -90 deg",
+      "status": "PASS",
+      "detail": {
+        "pixels": -28.228257485071538
+      }
+    },
+    {
+      "name": "ArrowRight moves in its screen direction at orbit -90 deg",
+      "status": "PASS",
+      "detail": {
+        "pixels": 30.39966190700011
+      }
+    },
+    {
+      "name": "ArrowUp moves in its screen direction at orbit -90 deg",
+      "status": "PASS",
+      "detail": {
+        "pixels": -16.67377942551073
+      }
+    },
+    {
+      "name": "ArrowDown moves in its screen direction at orbit -90 deg",
+      "status": "PASS",
+      "detail": {
+        "pixels": 20.484997035015567
+      }
+    },
+    {
+      "name": "Real right/up mouse drag increases azimuth/elevation and ends capture",
+      "status": "PASS",
+      "detail": {
+        "a": -0.040000183105468816,
+        "e": 0.9000000000000002,
+        "drag": null,
+        "focus": "scene"
+      }
+    },
+    {
+      "name": "Orbit drag returns keyboard focus to the simulation",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Left movement remains screen-left after a real orbit drag",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Arrow movement is not swallowed by the focused Pause button",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Editing a setting retains native arrows and cannot move the background",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Actual rendered reverse session has negative speed, RPM and PWM",
+      "status": "PASS",
+      "detail": {
+        "v": -0.25145986249647145,
+        "rpm": -17.060673034699967,
+        "pwm": -14.727037202048532,
+        "state": "REVERSE"
+      }
+    },
+    {
+      "name": "Reverse status and signed drive values are readable in the UI",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Near-side user repositions without losing the valid range-history track",
+      "status": "PASS",
+      "detail": {
+        "state": "REPOSITION",
+        "age": 0.033333333333333215,
+        "yaw": -0.39452322113418575,
+        "contacts": 0
+      }
+    },
+    {
+      "name": "Near-side recovery uses localized status instead of a raw state code",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Slope force and acceleration values render with explicit SI units",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Rendered walking user has separate above-ground feet on an incline",
+      "status": "PASS",
+      "detail": {
+        "minimumSoleClearance": 0.006000000000000116,
+        "error": 0,
+        "footMeshes": 4
+      }
+    },
+    {
+      "name": "Real mobile touch-left moves screen-left after a 90-degree camera turn",
+      "status": "PASS",
+      "detail": {
+        "pixels": -30.486518083877257
+      }
+    },
+    {
+      "name": "Real touch release clears movement and capture state",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "No browser script or GL errors in five-defect integration tests",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "remotePagesDeployed": false
+}

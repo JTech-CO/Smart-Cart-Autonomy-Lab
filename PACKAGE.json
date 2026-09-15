@@ -1,0 +1,77 @@
+{
+  "name": "Smart Cart Autonomy Lab",
+  "version": "1.1.1",
+  "deliveryDate": "2026-09-16",
+  "entry": "simulator/index.html",
+  "runtime": "Static HTML/CSS/classic JavaScript + native WebGL 2",
+  "targetRepository": "JTech-CO/smart_cart_app",
+  "packageMode": "additive; original Flutter sources are not included or replaced",
+  "upstreamModelRepository": "JTech-CO/Smart-Cart-4",
+  "upstreamModelCommit": "0d91785fc66699fb12a4c7b55bae2dfbb1adad1c",
+  "remoteRepositoryModified": false,
+  "remotePagesDeployed": false,
+  "tests": {
+    "core": {
+      "passed": 30,
+      "failed": 0
+    },
+    "bugfix": {
+      "passed": 43,
+      "failed": 0
+    },
+    "browser": {
+      "passed": 57,
+      "failed": 0
+    },
+    "bugfix-browser": {
+      "passed": 30,
+      "failed": 0
+    },
+    "static": {
+      "passed": 24,
+      "failed": 0
+    }
+  },
+  "browserNavigation": "file and loopback HTTP both attempted and blocked by administrator policy; browser UI tested using unchanged source text injection; not a successful URL E2E test",
+  "nativeDownloadsVerified": [
+    "csv",
+    "session.json",
+    "telemetry.json",
+    "config.json",
+    "png"
+  ],
+  "knownModelLimits": [
+    "known terrain traversability map and ideal cart odometry",
+    "uncalibrated finite service/parking brake; coast requires brake release",
+    "heuristic optical and UWB errors; no unique initial rear-only bearing",
+    "low rear objects can lie outside optical coverage",
+    "uncalibrated mass/wheel inertia/motor torque/current/controller gains",
+    "horizontal 2.5D ToF surrogate",
+    "constant-candidate kinematic path rollout, not full actuator-aware MPC",
+    "two-bone visual pedestrian gait, not full biomechanics",
+    "no live Flutter/vehicle transport or physical validation"
+  ],
+  "designReference": {
+    "repository": "JTech-CO/SANE",
+    "commit": "06ee062b28929062716e1eb518f025cb71e378bb",
+    "contract": "LITE.md",
+    "mode": "applied design constraints; no runtime dependency"
+  },
+  "interfaceTheme": "single light theme; independent of simulated environmental lighting",
+  "baseVersion": "1.1.0",
+  "newLocalRuntimeFiles": [
+    "simulator/js/kinematics.js",
+    "simulator/js/dynamics.js"
+  ],
+  "unchanged110RuntimeFiles": [
+    "math.js",
+    "world.js",
+    "gl.js"
+  ],
+  "cartHardwareConstructionUnchanged": true,
+  "testTotals": {
+    "passed": 184,
+    "failed": 0,
+    "browserUrlEntry": "NOT_VERIFIED; administrator-blocked; not counted as passing"
+  }
+}

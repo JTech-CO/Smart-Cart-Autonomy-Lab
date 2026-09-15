@@ -1,0 +1,16 @@
+{
+  "executedAt": "2026-09-15T16:40:55Z",
+  "tests": [
+    {
+      "target": "file",
+      "status": "NOT_VERIFIED",
+      "reason": "Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at file:///mnt/data/smart-cart-autonomy-lab-1.1.1/simulator/index.html"
+    },
+    {
+      "target": "loopback-http",
+      "status": "NOT_VERIFIED",
+      "reason": "Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:45645/index.html"
+    }
+  ],
+  "remotePagesDeployed": false
+}
