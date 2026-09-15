@@ -1,6 +1,6 @@
 {
   "suite": "Static source and HTTP delivery",
-  "executedAt": "2026-09-15T17:01:52Z",
+  "executedAt": "2026-09-15T19:39:20Z",
   "passed": 24,
   "failed": 0,
   "tests": [
@@ -122,7 +122,7 @@
           "path": "index.html",
           "status": 200,
           "mime": "text/html",
-          "bytes": 24033,
+          "bytes": 25295,
           "matches": true,
           "mime_ok": true
         },
@@ -130,7 +130,7 @@
           "path": "js/app.js",
           "status": 200,
           "mime": "text/javascript",
-          "bytes": 24155,
+          "bytes": 24108,
           "matches": true,
           "mime_ok": true
         },
@@ -154,7 +154,7 @@
           "path": "js/kinematics.js",
           "status": 200,
           "mime": "text/javascript",
-          "bytes": 3587,
+          "bytes": 4223,
           "matches": true,
           "mime_ok": true
         },
@@ -162,7 +162,7 @@
           "path": "js/math.js",
           "status": 200,
           "mime": "text/javascript",
-          "bytes": 3426,
+          "bytes": 3750,
           "matches": true,
           "mime_ok": true
         },
@@ -202,7 +202,7 @@
           "path": "js/view.js",
           "status": 200,
           "mime": "text/javascript",
-          "bytes": 10567,
+          "bytes": 10291,
           "matches": true,
           "mime_ok": true
         },
@@ -210,7 +210,7 @@
           "path": "js/world.js",
           "status": 200,
           "mime": "text/javascript",
-          "bytes": 7001,
+          "bytes": 7188,
           "matches": true,
           "mime_ok": true
         },
@@ -218,7 +218,7 @@
           "path": "css/app.css",
           "status": 200,
           "mime": "text/css",
-          "bytes": 24822,
+          "bytes": 26156,
           "matches": true,
           "mime_ok": true
         },
@@ -240,7 +240,7 @@
           "path": "index.html",
           "status": 200,
           "mime": "text/html",
-          "bytes": 24033,
+          "bytes": 25295,
           "matches": true,
           "mime_ok": true
         },
@@ -248,7 +248,7 @@
           "path": "js/app.js",
           "status": 200,
           "mime": "text/javascript",
-          "bytes": 24155,
+          "bytes": 24108,
           "matches": true,
           "mime_ok": true
         },
@@ -272,7 +272,7 @@
           "path": "js/kinematics.js",
           "status": 200,
           "mime": "text/javascript",
-          "bytes": 3587,
+          "bytes": 4223,
           "matches": true,
           "mime_ok": true
         },
@@ -280,7 +280,7 @@
           "path": "js/math.js",
           "status": 200,
           "mime": "text/javascript",
-          "bytes": 3426,
+          "bytes": 3750,
           "matches": true,
           "mime_ok": true
         },
@@ -320,7 +320,7 @@
           "path": "js/view.js",
           "status": 200,
           "mime": "text/javascript",
-          "bytes": 10567,
+          "bytes": 10291,
           "matches": true,
           "mime_ok": true
         },
@@ -328,7 +328,7 @@
           "path": "js/world.js",
           "status": 200,
           "mime": "text/javascript",
-          "bytes": 7001,
+          "bytes": 7188,
           "matches": true,
           "mime_ok": true
         },
@@ -336,7 +336,7 @@
           "path": "css/app.css",
           "status": 200,
           "mime": "text/css",
-          "bytes": 24822,
+          "bytes": 26156,
           "matches": true,
           "mime_ok": true
         },

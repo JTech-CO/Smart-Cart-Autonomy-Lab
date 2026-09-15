@@ -1,17 +1,29 @@
-# 1.1.1 manual defect checks
+# 1.2.0 manual checks
 
-[한국어](TEST-CASES-KR.md) · [Automated evidence](QA.md)
+[한국어](TEST-CASES-KR.md) · [QA](QA.md)
 
-Terrain/density changes reset the session. Keys move the tagged user, not the cart.
+## Working area
 
-| Defect | Procedure | Expected behavior |
-|---|---|---|
-| Movement directions | Choose flat/no obstacles, focus the scene, try all arrows. Repeat after 90/180-degree orbiting and after clicking Resume. | Movement follows screen directions; toolbar focus does not swallow arrows. Form inputs keep native editing. |
-| Orbit drag | Drag right and then up. Release outside the canvas and move without holding a pointer. | Azimuth/elevation increase respectively. Released pointers do not keep orbiting. |
-| Side/reverse tracking | Acquire the front tag first. E-stop only the cart, walk the user around its side and then several metres behind, and release E-stop. | Safe repositioning / low-speed reverse; range-history fusion remains distinct from PDoA. Reverse speed, RPM and PWM are negative. Initial rear-only acquisition is a separate ambiguous case. |
-| Walking slopes | Use 5-8-degree up/down grades with pedestrians. Lower the camera and inspect shoes. | Separate feet stay above terrain while knees and swing lift adapt. |
-| Vehicle inertia | Drive onto a 5-8-degree grade with 0 kg and 65 kg cargo; then press E while moving. | Grade/payload change the transient and stopping travel. Parking brake holds after stopping. Space freezes time and is not a physical-braking test. |
+At 1600×1000 and 1366×768, confirm all five driving-summary fields are above the viewport. Sensor layers and movement help remain below it, without a second summary block. The tested Chromium viewport heights are approximately 692px and 460px; font metrics, zoom and window size can change these values.
 
-`node tests/bugfix.test.cjs` also exercises unpowered, unbraked coasting through the internal physics command `coast:true, brake:false`. Normal autonomous stopping still requests parking hold. No new real-vehicle control or GUI brake-release button is introduced.
+## Held input and camera
 
-Being within nominal radio/scan range alone does not resolve initial bearing ambiguity, occlusion, inadequate space or unobserved low rear obstacles. See [model limits](MODEL.md).
+Choose flat terrain without obstacles. Hold W, orbit 90-180 degrees with the mouse without releasing W, then press C while still holding it. Movement must continue on the same terrain-forward axis. Repeat S/A/D and all arrows. World directions are +Z forward, -Z backward, +X left and -X right, with left/right defined from the initial rear observer. Screen direction naturally reverses when viewing from the opposite side; the terrain mapping does not change.
+
+Opposing inputs cancel and diagonals do not run faster. Key release clears motion; focus loss clears input and pauses. Native form controls do not move the background person. Test touch buttons after orbiting as well.
+
+## Feet
+
+Observe a low side view. The airborne foot advances relative to the torso and the supporting foot recedes, instead of the old reverse gait. The person faces actual travel. Repeat cardinal movement and autonomous pedestrians. Confirm slope sole support and no continued gait phase at a rejected boundary/cart movement. This remains visual IK, not perfect biomechanical contact through arbitrary turns and stops.
+
+## Live instruments
+
+Without clicking a disclosure, inspect current values and the right-hand LiDAR/UWB/ToF graphs. Scroll the common rail to motor current and steering-angle plots. Check time, units and solid/dashed traces. ToF values and plots both use mm. No return is -- or a graph gap, not a fabricated zero. Pausing freezes history and values.
+
+At 520 CSS px and below, plots reflow beneath numbers rather than hiding or forcing page-wide horizontal scrolling. Supplemental LiDAR point cloud and event log still expand on request.
+
+## Packaging and retained behavior
+
+Confirm README.md and README-KR.md at the archive root, reciprocal links and images. Delete legacy README-SIMULATION files left in the existing repository. Back up or merge a previous Flutter introduction before replacing the root README. Replace simulator/ completely and retain one Pages deployment workflow.
+
+Recheck sensor faults, E-stop, stairs, reversing, near-side recovery and grade dynamics. Export CSV, session JSON, Flutter-shaped JSON, config JSON and PNG; import a saved configuration. These are simulation tests, not real-cart operating instructions.

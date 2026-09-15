@@ -53,9 +53,4 @@ SC.View=class View{
  camera(dt){const s=this.sim,c=s.cart,V=SC.math.V;let desired=this.mode==='overview'?[0,.7,4]:this.mode==='detail'?[c.x,c.y+.48,c.z+.30]:[c.x+Math.sin(c.yaw)*.3,c.y+.6,c.z+Math.cos(c.yaw)*1.1];if(!this.target)this.target=desired;else this.target=this.target.map((v,i)=>SC.math.lerp(v,desired[i],Math.min(1,dt*5)));let a=this.azimuth;return{target:this.target,eye:V.add(this.target,[Math.sin(a)*this.distance*Math.cos(this.elevation),Math.sin(this.elevation)*this.distance,-Math.cos(a)*this.distance*Math.cos(this.elevation)]),shadowTarget:[c.x,c.y,c.z+1]};}
  render(dt=.016){const s=this.sim,c=s.cart,M=SC.math.M,draws=this.worldItems.map(item=>({item,matrix:M.identity()})),root=M.mul(s.sensors.matrix(c),M.translate(0,0,.379));for(let item of this.cart){let part=M.identity(),side=item.id.endsWith('L')?-1:1,steer=side<0?c.steerL:c.steerR;if(item.id.startsWith('rear'))part=M.pivot([side*.381,.131,-.379],M.rx(side<0?c.spinL:c.spinR));else if(item.id.startsWith('fork')||item.id.startsWith('front')){part=M.pivot([side*.258,.244,.364],M.ry(steer));if(item.id.startsWith('front'))part=M.mul(part,M.pivot([side*.258,.067,.389],M.rx(side<0?c.spinFL:c.spinFR)));}else if(item.id==='lidar')part=M.pivot([0,.864,.489],M.ry(s.time*20*Math.PI));draws.push({item,matrix:M.mul(root,part)});}
  for(let o of s.world.objects){if(o.type==='person')this.humanDraw(this.people[o.color],o,draws);else for(let item of this.objectItems.get(o.id))draws.push({item,matrix:M.translate(o.x,o.y,o.z)});}this.humanDraw(this.user,s.user,draws);this.renderer.render(draws,this.camera(dt),s.config,this.overlays());}
- screenVector(right,up){
-  // M.look uses screen-right = up × (eye - target), not world +X.
-  // At azimuth 0 the camera looks towards +Z, so screen-right is world -X.
-  const a=this.azimuth;return{x:-right*Math.cos(a)-up*Math.sin(a),z:-right*Math.sin(a)+up*Math.cos(a)};
- }
 };

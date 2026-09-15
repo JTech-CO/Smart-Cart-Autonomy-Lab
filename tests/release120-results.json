@@ -1,0 +1,140 @@
+{
+  "suite": "1.2.0 fixed-input, gait and packaging regression",
+  "version": "1.2.0",
+  "node": "v22.16.0",
+  "executedAt": "2026-09-15T19:35:32.052Z",
+  "passed": 18,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "The application input path does not read camera/view orientation",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Fixed axis mapping rejects nonfinite input and clamps external magnitudes",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "WASD/arrow equivalent directions preserve normalized travel speed",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Swing foot travels from behind to ahead; positive lift never accompanies reverse swing",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Stance foot recedes at exactly the distance-phase rate without lift",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Gait cycles are continuous and periodic across negative and wrapped phases",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Supported foot remains planted in straight travel at heading 0",
+      "status": "PASS",
+      "detail": {
+        "maxDriftM": 8.049116928532385e-16,
+        "speedsMps": [
+          0.2,
+          0.35,
+          0.65,
+          1.05,
+          1.5
+        ],
+        "legs": 2
+      }
+    },
+    {
+      "name": "Supported foot remains planted in straight travel at heading 90",
+      "status": "PASS",
+      "detail": {
+        "maxDriftM": 8.049116928532385e-16,
+        "speedsMps": [
+          0.2,
+          0.35,
+          0.65,
+          1.05,
+          1.5
+        ],
+        "legs": 2
+      }
+    },
+    {
+      "name": "Supported foot remains planted in straight travel at heading 180",
+      "status": "PASS",
+      "detail": {
+        "maxDriftM": 8.0503132006544e-16,
+        "speedsMps": [
+          0.2,
+          0.35,
+          0.65,
+          1.05,
+          1.5
+        ],
+        "legs": 2
+      }
+    },
+    {
+      "name": "Supported foot remains planted in straight travel at heading -90",
+      "status": "PASS",
+      "detail": {
+        "maxDriftM": 8.049116928532385e-16,
+        "speedsMps": [
+          0.2,
+          0.35,
+          0.65,
+          1.05,
+          1.5
+        ],
+        "legs": 2
+      }
+    },
+    {
+      "name": "Arms counter-swing against the same-side advancing leg",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "User facing follows actual travel for four fixed input directions",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "User gait does not continue when world boundary rejects forward movement",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Blocked autonomous pedestrian neither moonwalks nor advances intended phase",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Free autonomous pedestrian phase and facing use resolved displacement",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Standard outermost README names and reciprocal language links",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "All five history canvases use always-visible time-plot containers",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Both entry titles and README introductions identify release 1.2.0",
+      "status": "PASS",
+      "detail": null
+    }
+  ]
+}

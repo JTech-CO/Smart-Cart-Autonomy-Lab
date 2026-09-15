@@ -1,4 +1,4 @@
-/* Executable 1.1.1 defect regression. No browser or third-party dependencies.
+/* Executable 1.2.0 defect regression. No browser or third-party dependencies.
  * Navigation fixtures explicitly supply acquired history where stated; they
  * do not claim two initial rear ranges uniquely identify a tag bearing. */
 'use strict';
@@ -14,15 +14,14 @@ function acquired(target,extra={}){
  s.sensors.update(s.world,s.cart,s.user,0);s.nav=new SC.Navigation(s.config,s.world);s.nav.observe(s.sensors,0,s.cart);return s;
 }
 function placed(terrain,slope=8,cargo=15,yaw=0){const s=base({terrain,slope,cargo});s.cart.z=5;s.cart.yaw=yaw;s.user.x=8;s.user.z=15;Object.assign(s.cart,SC.cartTerrainPose(s.cart,s.world));return s;}
-for(const angle of[-180,-135,-90,-45,0,45,90,135])test('Screen-relative cardinal/diagonal directions at orbit '+angle+' deg',()=>{
- const az=angle*SC.math.DEG;
- for(const el of[.15,.63,1.52]){
-  const eye=[Math.sin(az)*6*Math.cos(el),Math.sin(el)*6,-Math.cos(az)*6*Math.cos(el)],view=SC.math.M.look(eye,[0,0,0]);
-  for(const [right,up]of[[-1,0],[1,0],[0,1],[0,-1],[-1,1],[1,1],[-1,-1],[1,-1]]){
-   const d=SC.View.prototype.screenVector.call({azimuth:az},right,up),p=SC.math.M.point(view,[d.x,0,d.z],0);
-   if(right)assert(p[0]*right>.1);else assert(Math.abs(p[0])<1e-9);
-   if(up)assert(p[1]*up>.01);else assert(Math.abs(p[1])<1e-9);
-   assert(Math.abs(Math.hypot(d.x,d.z)-Math.hypot(right,up))<1e-9);
+for(const angle of[-180,-135,-90,-45,0,45,90,135])test('Fixed terrain cardinal/diagonal inputs independent of orbit '+angle+' deg',()=>{
+ // Extra camera state must have no effect. No View API participates in this mapping.
+ for(const elevation of[.15,.63,1.52]){
+  for(const [right,forward]of[[-1,0],[1,0],[0,1],[0,-1],[-1,1],[1,1],[-1,-1],[1,-1]]){
+   const d=SC.math.controlVector(right,forward,{azimuth:angle*SC.math.DEG,elevation});
+   assert.equal(d.x,-right);assert.equal(d.z,forward);
+   const s=base();s.setInput(d.x,d.z);
+   assert(Math.abs(Math.hypot(s.input.x,s.input.z)-1)<1e-9);
   }
  }
 });
@@ -161,5 +160,5 @@ test('Signed reverse and slope dynamics are retained in CSV capture and Flutter 
  assert(s.latest.acceleration_mps2<0);assert(s.latest.gravity_force_N<0);assert(s.latest.rpm_left<0);
  assert(t.drive.speed_mps<0);assert.equal(t.sim.acceleration_mps2,s.cart.a);assert.equal(t.sim.gravity_force_N,s.cart.gravityForce);assert.equal(t.tof.cliff,null);
 });
-const out={suite:'1.1.1 five-defect regression',version:'1.1.1',node:process.version,executedAt:new Date().toISOString(),passed:rows.filter(r=>r.status==='PASS').length,failed:rows.filter(r=>r.status==='FAIL').length,tests:rows};
+const out={suite:'1.2.0 five-defect regression',version:'1.2.0',node:process.version,executedAt:new Date().toISOString(),passed:rows.filter(r=>r.status==='PASS').length,failed:rows.filter(r=>r.status==='FAIL').length,tests:rows};
 fs.writeFileSync(path.join(__dirname,'bugfix-results.json'),JSON.stringify(out,null,2));console.log('RESULT',out.passed,out.failed);

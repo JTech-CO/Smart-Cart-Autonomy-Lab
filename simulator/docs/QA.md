@@ -1,68 +1,70 @@
-# Verification scope: 1.1.1
+# Verification scope: 1.2.0
 
-Smart Cart Autonomy Lab **1.1.1**, 2026-09-16 KST. These are executed regression results, not physical safety certification or a guarantee for every crowd, route or sensor condition.
+[한국어](QA-KR.md) · [Changelog](CHANGELOG.md) · [Manual checks](TEST-CASES.md)
 
-[한국어](QA-KR.md) · [Changelog](CHANGELOG.md) · [Manual reproduction](TEST-CASES.md)
+Smart Cart Autonomy Lab **1.2.0**, 2026-09-16 KST. Local revision of the supplied 1.1.1 archive. The following are executed software tests, not physical safety certification or a guarantee for every path and crowd.
 
-## Executed suites
+## Executed results
 
 | Suite | Passed | Failed | Scope |
 |---|---:|---:|---|
-| Retained Node.js core | 30 | 0 | Following, obstacles, terrain stops, faults, emergency stop, protocol |
-| New defect core | 43 | 0 | Camera basis, reversing, lateral tracking, actual foot meshes, grade dynamics |
-| Retained browser UI/WebGL | 57 | 0 | DOM input, light UI, rendering, responsive layout, native file saves |
-| New defect browser | 30 | 0 | Real keyboard, drag, touch, signed reverse telemetry, terrain-supported feet |
-| Static source / HTTP delivery | 24 | 0 | JS syntax, local references, UTF-8, bytes and MIME at two URL layouts |
-| **Total** | **184** | **0** | Named automated checks, not every internal sample counted again |
+| Retained core | 30 | 0 | Following, avoidance, faults, terrain, protocol |
+| Updated previous defect core | 43 | 0 | Fixed input, reversing, side tracking, sole meshes, grade dynamics |
+| New release core | 18 | 0 | Fixed input path, forward gait, stance, actual NPC travel, standard README |
+| Retained UI/WebGL | 57 | 0 | Controls, dialogs, lighting, graph units, native downloads, responsive layout |
+| Updated previous defect browser | 30 | 0 | Actual arrows, orbit, touch, reverse display and incline support |
+| New release browser | 45 | 0 | Held WASD through drag/C/top view, all live graphs, 13 widths, baseline comparison |
+| Static source / HTTP delivery | 24 | 0 | JS syntax, links, UTF-8, local delivery bytes and MIME |
+| **Total** | **247** | **0** | Named checks; internal samples are not counted again |
 
-The 2,560 tested walking poses are inside the new core suite, not added again to this total. Blocked browser URL-entry probes are recorded as **NOT_VERIFIED**, not passed tests.
+[Core](qa/core-results.json) · [Previous defects](qa/bugfix-results.json) · [Release core](qa/release120-results.json) · [UI](qa/browser-results.json) · [Defect browser](qa/bugfix-browser-results.json) · [Release browser](qa/release120-browser-results.json) · [Static](qa/static-results.json)
 
-[Core](qa/core-results.json) · [Defect core](qa/bugfix-results.json) · [Browser](qa/browser-results.json) · [Defect browser](qa/bugfix-browser-results.json) · [Static](qa/static-results.json) · [Navigation probes](qa/navigation-results.json)
+## Working-area comparison
 
-## Baseline and corrections
+Layout measurements use the supplied 1.1.1 HTML/CSS and the new app in Chromium with identical window dimensions and system fonts, at device scale factor 1. This is CSS layout verification, not screenshot estimation.
 
-The supplied 1.1.0 archive was independently extracted and its defects reproduced. At the frontal camera, screen-left had the opposite world-X sign. Right/up dragging changed azimuth/elevation with the opposite signs. A near-side target produced zero speed, braking and HOLD_DISTANCE. An unpowered/unbraked cart stayed motionless on an 8-degree incline. A sampled walking mesh penetrated the incline by **10.19 mm**. See the version-labeled [baseline record](qa/baseline-reproduction.json).
+| CSS window | 1.1.1 scene height | 1.2.0 scene height | Gain |
+|---|---:|---:|---:|
+| 1600×1000 | 575 px | 691.70 px | 116.70 px |
+| 1366×768 | 343 px | 459.70 px | 116.70 px |
 
-**Input and orbit.** Core tests project eight cardinal/diagonal inputs through the actual view matrix at eight azimuths and three elevations. Browser tests physically press all four arrows at 0, 90, 180 and -90 degrees and evaluate screen-projected displacement, not merely changed world coordinates. A real right/up pointer drag changes azimuth/elevation in the corrected direction and releases capture. Arrows after dragging or using Pause remain usable; native editing and modal behavior are preserved. A 390×844 touch-capable Chromium context receives actual CDP touchStart/touchEnd events at the mobile button after a 90-degree orbit. Screen-left motion and release cleanup pass. This is not an Android/iOS device test.
+The original bottom summary was 75px tall. Its replacement occupies 29px within the top band. The wider split telemetry rail intentionally trades some viewport width for usable plot width: at 1600px the 3D width is 1056px rather than 1208px. Below 1201px, instruments reflow under the full-width scene. Graphs stay side by side with readings down to 521px, then reflow below at 520px and narrower. Tests cover 320, 390, 520, 521, 600, 820, 1200, 1201, 1280, 1366, 1440, 1600 and 1920px without horizontal page overflow or hidden time plots.
 
-**Reverse and lateral tracking.** A previously acquired tag circles the cart across both assumed PDoA boundaries with noise 0/1/2. Maximum position errors in this seeded model test are 0.044/0.142/0.147 m; maximum observation ages are 0.040/0.040/0.100 s. These are synthetic-model results, not real UWB accuracy. Acquired left/right near-side targets cause roughly 0.92/0.93 m repositioning and 56-degree heading recovery without contact. Tracking continues when the target leaves the side. Three acquired rear targets are approached with the correct reverse curvature and stop without contact or repeated gear oscillation. Real browser rendering displays negative speed, RPM and duty. Brake-before-reverse, observed rear collision rejection and map-boundary rejection pass. A separate test confirms that two initial rear-only ranges do **not** fabricate a bearing or trigger blind reversing. Forward ToF still does not see low rear objects.
+A 6px root overflow caused by an offscreen screen-reader table caption was found during testing. Giving its table a positioning context confines the caption to the scrolling rail, preserving accessible markup and full-height desktop layout.
 
-**Feet.** Actual transformed shoe/calf vertices are checked against terrain at 576 poses each on flat/uphill/downhill/rolling terrain and 256 stair poses: **2,560 total**. Minimum clearance in these cases is approximately 6 mm on flat/slopes and 1.81 mm on stairs; thigh/shin lengths remain constant to floating-point precision. Stationary feet stop swinging. The same terrain pose drives the user and autonomous pedestrians, and actual browser-rendered uphill foot geometry is tested separately. This is two-bone visual articulation and sole support, not complete biomechanics, perfect planted-foot locking or all possible terrain meshes.
+## Input and gait evidence
 
-**Dynamics.** Translational mass 49 kg becomes about 53.021 kg with equivalent wheel inertia in the selected fixture. Force balance, payload-dependent startup, grade-entry transients, rollback through zero speed, heading-dependent gravity, finite braking and parking hold pass. After one simulated second without drive or brakes on an 8-degree incline, the cart facing uphill has speed -1.098 m/s, horizontal travel -0.544 m and longitudinal gravity -66.899 N. Facing downhill reverses these signs. With the same selected initial braking speed, stopping travel is 0.105 m uphill, 0.164 m flat and 0.331 m downhill. These values follow uncalibrated demo parameters, not measured cart capabilities. Normal follow-stop requests the assumed parking brake, so a stopped cart can correctly remain on the slope. Signed RPM, wheel rotation, acceleration, forces and CSV/JSON extensions are checked.
+The application input function now calls a pure fixed-axis mapper and does not read View state. Core tests check cardinal/diagonal mapping and speed normalization. Browser tests use physical DOM keyboard and pointer events: W, S, A and D are each held during a real mouse orbit, a C-key reset and an upper-camera change. Cross-axis drift remains below the test tolerance. Arrow/touch regressions use the new fixed-world contract.
 
-## Retained-test adjustment
+The original 1.1.1 screen-relative assertions were deliberately replaced; they are not appropriate acceptance criteria for the explicit 1.2.0 request. An early retained browser run failed a minimum-distance assertion because initial software rendering advanced only five ticks during its wall-clock hold. The test now waits for 0.35 **simulation seconds**, retaining its world-axis and distance assertions rather than weakening movement correctness. This is a QA harness correction, not a performance claim.
 
-The loaded-uphill core test now advances **1,200 ticks (20 s)** rather than 1,050 ticks (17.5 s). Removing instantaneous grade cancellation and introducing finite drive response changed arrival timing; the old duration ended short of the position threshold. Terrain, payload, destination threshold, finite values and per-motor power bounds are retained. This timing adjustment is disclosed rather than presented as byte-identical testing. New independent checks cover force balance, loading, grade transients, braking travel and coast behavior.
+Foot swing is monotonic forward, stance monotonic backward, and lift is confined to swing. A linear stance and distance-phase relation make the supporting ankle remain stationary in straight, steady flat-ground travel across four headings, five speeds and both legs. Arms counter-swing. NPCs derive phase, facing and velocity from collision-resolved motion; blocked movement does not animate intended travel. The previous 2,560 actual sole/calf-pose clearance checks across slopes, terrain transitions and stairs pass again. Abrupt turns/stops and arbitrary terrain are not a complete planted-foot contact solver or biomechanical model.
 
-The 57 retained browser assertions recheck the light-only UI, 14px essential text, layout hierarchy, sensor panels/charts, ToF mm units, settings/faults, emergency stop, imports, focus cleanup and GPU reset disposal. CSV, session JSON, telemetry JSON, configuration JSON and PNG exports are verified through actual browser download events and completed nonempty file saves, not only Blob creation.
+## Graph and feature regression
 
-## Rendering, layout and preview provenance
+Five time-series canvases are mounted and drawn without closed details ancestors. Numeric values and plots share a row and a single scroll container. Tests confirm all five repaint from advancing simulation history, keep correct units and remain readable after resizing and scrolling to lower drive instruments. ToF no-return values remain distinct from zero.
 
-Chromium 144.0.7559.96 on Linux with ANGLE/SwiftShader executes real WebGL 2. The baseline rendered scene has 87,370 triangles, 172 draws and GL error 0. Widths 320, 390, 600, 820, 1024, 1366 and 1600 CSS px are checked for horizontal overflow and accessible essential controls. Narrow-screen vertical scrolling is intentional. No real-GPU frame-rate guarantee, full OS font matrix or WCAG certification is claimed.
+Native CSV, session JSON, telemetry JSON, config JSON and PNG exports were saved as real browser download files and inspected. Reset/disposal, imports, dialogs, pause/focus cleanup, sensor faults, emergency stop, reverse/lateral tracking, stairs and slope forces were rechecked. Previews are actual WebGL application screenshots with computed telemetry, paused for inspection; reverse and slope previews use declared test fixtures, not real-world data.
 
-[Desktop](../assets/preview-desktop.png) · [Reverse](../assets/preview-reverse.png) · [Slope](../assets/preview-slope.png) · [Mobile](../assets/preview-mobile.png)
+## Limits and provenance
 
-Previews are actual WebGL screenshots from local application code, paused for inspection. The reverse screenshot uses an explicitly acquired-track fixture. The slope screenshot is a deliberate placement/drive fixture for forces and articulated feet. Telemetry is computed, not fabricated DOM decoration. These images are not evidence of an entire arbitrary interactive route completing; displayed velocity is the last frozen state.
+Both file and loopback HTTP navigation were attempted and rejected by the managed browser with `ERR_BLOCKED_BY_ADMINISTRATOR`. UI/WebGL suites therefore inject unchanged local source text into about:blank. Separate loopback HTTP checks verify 200 responses, exact bytes and MIME at both deployment layouts. **This does not verify a normal URL-entry E2E flow or a live GitHub Pages deployment.** No administrator policy was altered. [Navigation probes](qa/navigation-results.json)
 
-## Provenance and verification limits
+Chromium on Linux executes real WebGL 2 through ANGLE/SwiftShader with Xvfb. No Safari, Firefox, physical mobile device, hardware-GPU performance, screen-reader end-to-end certification or real cart was tested. No remote commit, push or Actions run was performed. Sensor/vehicle models remain uncalibrated. [Source hashes and exact unchanged files](qa/provenance.json)
 
-[provenance.json](qa/provenance.json) records the base archive and runtime SHA-256 values. `math.js`, `world.js` and `gl.js` are byte-identical to 1.1.0. The cart hardware construction part of `model.js` is unchanged; its pedestrian construction is articulated differently. `kinematics.js` and `dynamics.js` are new local classic scripts, not external dependencies.
-
-Both `file://` and loopback HTTP browser navigation were actually attempted and rejected with `ERR_BLOCKED_BY_ADMINISTRATOR`. Browser suites inject the complete local HTML/CSS/JS into about:blank to execute real DOM events and WebGL. Separate temporary loopback HTTP tests verify status 200, identical bytes and executable MIME for HTML, 11 scripts, CSS and favicon at the Pages-artifact root and a nested repository path. **This is not browser URL-entry E2E success.** No administrator or security policies were disabled.
-
-No remote commit, push, GitHub Actions run or live Pages deployment was performed. Safari, Firefox, actual Android/iOS devices and GPUs, physical sensors/motors/brakes and live Flutter transport are not validated. Known terrain, ideal odometry, assumed tag height, heuristic sensing, rear optical blind spots and uncalibrated drive/brake parameters remain explicit [model limitations](MODEL.md).
+`dynamics.js`, `sensors.js`, `navigation.js`, `simulation.js`, `gl.js` and `model.js` are byte-identical to the supplied 1.1.1. Changes are limited to app/layout, pure input mapping, pedestrian displacement/gait and the removal of the obsolete View input mapper, plus tests/docs/packaging.
 
 ## Re-run
 
 ```sh
 node tests/core.test.cjs
 node tests/bugfix.test.cjs
+node tests/release120.test.cjs
 python tests/static.test.py
-# QA tools only: Python Playwright and Chromium.
 python tests/browser.test.py
 python tests/bugfix.browser.test.py
+python tests/release120.browser.test.py
 python tests/navigation.test.py
 ```
 
-On Linux test hosts that need Xvfb, start it and set `DISPLAY=:99`. Set `SC_TEST_URL` to exercise a real static URL on a normal host. These tools and any temporary test server are not application runtime dependencies. JSON timestamps are UTC; the release date above is KST.
+Browser QA requires Playwright/Chromium. On Linux hosts needing Xvfb, use DISPLAY=:99 with Xvfb running. Set SC_TEST_URL on a host permitting real static URL navigation. Set SC_BASELINE_DIR to an extracted 1.1.1 package to execute the two optional layout comparisons; without that archive the new browser suite has 43 rather than 45 checks. These are development tools, not runtime dependencies.

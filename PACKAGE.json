@@ -1,11 +1,11 @@
 {
   "name": "Smart Cart Autonomy Lab",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "deliveryDate": "2026-09-16",
   "entry": "simulator/index.html",
   "runtime": "Static HTML/CSS/classic JavaScript + native WebGL 2",
   "targetRepository": "JTech-CO/smart_cart_app",
-  "packageMode": "additive; original Flutter sources are not included or replaced",
+  "packageMode": "static simulator update; root README.md and README-KR.md intentionally replaced; existing Flutter source directories untouched",
   "upstreamModelRepository": "JTech-CO/Smart-Cart-4",
   "upstreamModelCommit": "0d91785fc66699fb12a4c7b55bae2dfbb1adad1c",
   "remoteRepositoryModified": false,
@@ -19,12 +19,20 @@
       "passed": 43,
       "failed": 0
     },
+    "release120": {
+      "passed": 18,
+      "failed": 0
+    },
     "browser": {
       "passed": 57,
       "failed": 0
     },
     "bugfix-browser": {
       "passed": 30,
+      "failed": 0
+    },
+    "release120-browser": {
+      "passed": 45,
       "failed": 0
     },
     "static": {
@@ -58,20 +66,37 @@
     "mode": "applied design constraints; no runtime dependency"
   },
   "interfaceTheme": "single light theme; independent of simulated environmental lighting",
-  "baseVersion": "1.1.0",
-  "newLocalRuntimeFiles": [
-    "simulator/js/kinematics.js",
-    "simulator/js/dynamics.js"
-  ],
-  "unchanged110RuntimeFiles": [
-    "math.js",
-    "world.js",
-    "gl.js"
-  ],
+  "baseVersion": "1.1.1",
   "cartHardwareConstructionUnchanged": true,
   "testTotals": {
-    "passed": 184,
+    "passed": 247,
     "failed": 0,
     "browserUrlEntry": "NOT_VERIFIED; administrator-blocked; not counted as passing"
-  }
+  },
+  "unchanged111RuntimeFiles": [
+    "dynamics.js",
+    "gl.js",
+    "model.js",
+    "navigation.js",
+    "sensors.js",
+    "simulation.js"
+  ],
+  "changedRuntimeFiles": [
+    "app.js",
+    "kinematics.js",
+    "math.js",
+    "view.js",
+    "world.js"
+  ],
+  "readmeFiles": [
+    "README.md",
+    "README-KR.md"
+  ],
+  "fixedInputAxes": {
+    "W/up": "+Z",
+    "S/down": "-Z",
+    "A/left": "+X",
+    "D/right": "-X"
+  },
+  "telemetryLayout": "Current numeric values left, always-displayed time-series graphs right; one common vertical scroll; stacked below 521 CSS px"
 }

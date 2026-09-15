@@ -1,0 +1,1226 @@
+{
+  "suite": "1.2.0 working-area, held-key and live-plot browser regression",
+  "version": "1.2.0",
+  "executedAt": "2026-09-15T19:39:17Z",
+  "browser": "144.0.7559.96",
+  "passed": 45,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "All driving-summary fields are above the 3D scene",
+      "status": "PASS",
+      "detail": {
+        "window": [
+          1600,
+          1000
+        ],
+        "viewport": {
+          "width": 1056,
+          "height": 691.703125,
+          "top": 210.296875,
+          "bottom": 902
+        },
+        "summary": {
+          "top": 173.296875,
+          "bottom": 202.296875,
+          "height": 29
+        },
+        "pageWidth": 1600
+      }
+    },
+    {
+      "name": "1600x1000 working scene is at least 680px tall without page scrolling",
+      "status": "PASS",
+      "detail": {
+        "window": [
+          1600,
+          1000
+        ],
+        "viewport": {
+          "width": 1056,
+          "height": 691.703125,
+          "top": 210.296875,
+          "bottom": 902
+        },
+        "summary": {
+          "top": 173.296875,
+          "bottom": 202.296875,
+          "height": 29
+        },
+        "pageWidth": 1600
+      }
+    },
+    {
+      "name": "Five plots are rendered without a collapsed ancestor",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "A single scroll container keeps numerical rows aligned with graphs",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "KeyW keeps one terrain axis while held through real orbit drag",
+      "status": "PASS",
+      "detail": {
+        "before": {
+          "x": 0,
+          "z": -2.7
+        },
+        "after": {
+          "x": 0,
+          "z": -1.7724999999999964
+        },
+        "orbitRadians": 1.1400000000000001
+      }
+    },
+    {
+      "name": "KeyW keeps moving on the same axis while C resets the camera",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "KeyW ignores top-camera orientation while still held",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "KeyW keyup clears movement after the camera changes",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "KeyS keeps one terrain axis while held through real orbit drag",
+      "status": "PASS",
+      "detail": {
+        "before": {
+          "x": 0,
+          "z": -2.7
+        },
+        "after": {
+          "x": 0,
+          "z": -3.5050000000000034
+        },
+        "orbitRadians": 1.1400000000000003
+      }
+    },
+    {
+      "name": "KeyS keeps moving on the same axis while C resets the camera",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "KeyS ignores top-camera orientation while still held",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "KeyS keyup clears movement after the camera changes",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "KeyA keeps one terrain axis while held through real orbit drag",
+      "status": "PASS",
+      "detail": {
+        "before": {
+          "x": 0,
+          "z": -2.7
+        },
+        "after": {
+          "x": 0.8049999999999996,
+          "z": -2.7
+        },
+        "orbitRadians": 1.1400000000000003
+      }
+    },
+    {
+      "name": "KeyA keeps moving on the same axis while C resets the camera",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "KeyA ignores top-camera orientation while still held",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "KeyA keyup clears movement after the camera changes",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "KeyD keeps one terrain axis while held through real orbit drag",
+      "status": "PASS",
+      "detail": {
+        "before": {
+          "x": 0,
+          "z": -2.7
+        },
+        "after": {
+          "x": -0.8049999999999996,
+          "z": -2.7
+        },
+        "orbitRadians": 1.1400000000000003
+      }
+    },
+    {
+      "name": "KeyD keeps moving on the same axis while C resets the camera",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "KeyD ignores top-camera orientation while still held",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "KeyD keyup clears movement after the camera changes",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Opposing letter/arrow keys cancel rather than rotating the input",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Combined letter input has normalized diagonal speed",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Focus loss clears keys and pauses after an orbiting held-input session",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Live lidarChart repaints from advancing simulation history",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Live uwbChart repaints from advancing simulation history",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Live tofChart repaints from advancing simulation history",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Live motorChart repaints from advancing simulation history",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Live servoChart repaints from advancing simulation history",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Scrolled lower instruments preserve numeric/plot row alignment",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Visible plots and unclipped layout at 1920px",
+      "status": "PASS",
+      "detail": {
+        "width": 1920,
+        "scroll": 1920,
+        "sideBySide": true,
+        "allPlots": true,
+        "graphs": [
+          {
+            "w": 289.734375,
+            "h": 126
+          },
+          {
+            "w": 289.734375,
+            "h": 126
+          },
+          {
+            "w": 289.734375,
+            "h": 126
+          },
+          {
+            "w": 289.734375,
+            "h": 126
+          },
+          {
+            "w": 289.734375,
+            "h": 126
+          }
+        ],
+        "summaryAbove": true
+      }
+    },
+    {
+      "name": "Visible plots and unclipped layout at 1600px",
+      "status": "PASS",
+      "detail": {
+        "width": 1600,
+        "scroll": 1600,
+        "sideBySide": true,
+        "allPlots": true,
+        "graphs": [
+          {
+            "w": 249.296875,
+            "h": 126
+          },
+          {
+            "w": 249.296875,
+            "h": 126
+          },
+          {
+            "w": 249.296875,
+            "h": 126
+          },
+          {
+            "w": 249.296875,
+            "h": 126
+          },
+          {
+            "w": 249.296875,
+            "h": 126
+          }
+        ],
+        "summaryAbove": true
+      }
+    },
+    {
+      "name": "Visible plots and unclipped layout at 1440px",
+      "status": "PASS",
+      "detail": {
+        "width": 1440,
+        "scroll": 1440,
+        "sideBySide": true,
+        "allPlots": true,
+        "graphs": [
+          {
+            "w": 228.015625,
+            "h": 126
+          },
+          {
+            "w": 228.015625,
+            "h": 126
+          },
+          {
+            "w": 228.015625,
+            "h": 126
+          },
+          {
+            "w": 228.015625,
+            "h": 126
+          },
+          {
+            "w": 228.015625,
+            "h": 126
+          }
+        ],
+        "summaryAbove": true
+      }
+    },
+    {
+      "name": "Visible plots and unclipped layout at 1366px",
+      "status": "PASS",
+      "detail": {
+        "width": 1366,
+        "scroll": 1366,
+        "sideBySide": true,
+        "allPlots": true,
+        "graphs": [
+          {
+            "w": 228.015625,
+            "h": 126
+          },
+          {
+            "w": 228.015625,
+            "h": 126
+          },
+          {
+            "w": 228.015625,
+            "h": 126
+          },
+          {
+            "w": 228.015625,
+            "h": 126
+          },
+          {
+            "w": 228.015625,
+            "h": 126
+          }
+        ],
+        "summaryAbove": true
+      }
+    },
+    {
+      "name": "Visible plots and unclipped layout at 1280px",
+      "status": "PASS",
+      "detail": {
+        "width": 1280,
+        "scroll": 1280,
+        "sideBySide": true,
+        "allPlots": true,
+        "graphs": [
+          {
+            "w": 228.015625,
+            "h": 126
+          },
+          {
+            "w": 228.015625,
+            "h": 126
+          },
+          {
+            "w": 228.015625,
+            "h": 126
+          },
+          {
+            "w": 228.015625,
+            "h": 126
+          },
+          {
+            "w": 228.015625,
+            "h": 126
+          }
+        ],
+        "summaryAbove": true
+      }
+    },
+    {
+      "name": "Visible plots and unclipped layout at 1201px",
+      "status": "PASS",
+      "detail": {
+        "width": 1201,
+        "scroll": 1201,
+        "sideBySide": true,
+        "allPlots": true,
+        "graphs": [
+          {
+            "w": 228.015625,
+            "h": 126
+          },
+          {
+            "w": 228.015625,
+            "h": 126
+          },
+          {
+            "w": 228.015625,
+            "h": 126
+          },
+          {
+            "w": 228.015625,
+            "h": 126
+          },
+          {
+            "w": 228.015625,
+            "h": 126
+          }
+        ],
+        "summaryAbove": true
+      }
+    },
+    {
+      "name": "Visible plots and unclipped layout at 1200px",
+      "status": "PASS",
+      "detail": {
+        "width": 1200,
+        "scroll": 1200,
+        "sideBySide": true,
+        "allPlots": true,
+        "graphs": [
+          {
+            "w": 606,
+            "h": 150
+          },
+          {
+            "w": 606,
+            "h": 150
+          },
+          {
+            "w": 606,
+            "h": 150
+          },
+          {
+            "w": 606,
+            "h": 150
+          },
+          {
+            "w": 606,
+            "h": 150
+          }
+        ],
+        "summaryAbove": true
+      }
+    },
+    {
+      "name": "Visible plots and unclipped layout at 820px",
+      "status": "PASS",
+      "detail": {
+        "width": 820,
+        "scroll": 820,
+        "sideBySide": true,
+        "allPlots": true,
+        "graphs": [
+          {
+            "w": 397,
+            "h": 150
+          },
+          {
+            "w": 397,
+            "h": 150
+          },
+          {
+            "w": 397,
+            "h": 150
+          },
+          {
+            "w": 397,
+            "h": 150
+          },
+          {
+            "w": 397,
+            "h": 150
+          }
+        ],
+        "summaryAbove": true
+      }
+    },
+    {
+      "name": "Visible plots and unclipped layout at 600px",
+      "status": "PASS",
+      "detail": {
+        "width": 600,
+        "scroll": 600,
+        "sideBySide": true,
+        "allPlots": true,
+        "graphs": [
+          {
+            "w": 295,
+            "h": 150
+          },
+          {
+            "w": 295,
+            "h": 150
+          },
+          {
+            "w": 295,
+            "h": 150
+          },
+          {
+            "w": 295,
+            "h": 150
+          },
+          {
+            "w": 295,
+            "h": 150
+          }
+        ],
+        "summaryAbove": true
+      }
+    },
+    {
+      "name": "Visible plots and unclipped layout at 521px",
+      "status": "PASS",
+      "detail": {
+        "width": 521,
+        "scroll": 521,
+        "sideBySide": true,
+        "allPlots": true,
+        "graphs": [
+          {
+            "w": 251.5625,
+            "h": 150
+          },
+          {
+            "w": 251.5625,
+            "h": 150
+          },
+          {
+            "w": 251.5625,
+            "h": 150
+          },
+          {
+            "w": 251.5625,
+            "h": 150
+          },
+          {
+            "w": 251.5625,
+            "h": 150
+          }
+        ],
+        "summaryAbove": true
+      }
+    },
+    {
+      "name": "Visible plots and unclipped layout at 520px",
+      "status": "PASS",
+      "detail": {
+        "width": 520,
+        "scroll": 520,
+        "sideBySide": false,
+        "allPlots": true,
+        "graphs": [
+          {
+            "w": 492,
+            "h": 148
+          },
+          {
+            "w": 492,
+            "h": 148
+          },
+          {
+            "w": 492,
+            "h": 148
+          },
+          {
+            "w": 492,
+            "h": 148
+          },
+          {
+            "w": 492,
+            "h": 148
+          }
+        ],
+        "summaryAbove": true
+      }
+    },
+    {
+      "name": "Visible plots and unclipped layout at 390px",
+      "status": "PASS",
+      "detail": {
+        "width": 390,
+        "scroll": 390,
+        "sideBySide": false,
+        "allPlots": true,
+        "graphs": [
+          {
+            "w": 362,
+            "h": 148
+          },
+          {
+            "w": 362,
+            "h": 148
+          },
+          {
+            "w": 362,
+            "h": 148
+          },
+          {
+            "w": 362,
+            "h": 148
+          },
+          {
+            "w": 362,
+            "h": 148
+          }
+        ],
+        "summaryAbove": true
+      }
+    },
+    {
+      "name": "Visible plots and unclipped layout at 320px",
+      "status": "PASS",
+      "detail": {
+        "width": 320,
+        "scroll": 320,
+        "sideBySide": false,
+        "allPlots": true,
+        "graphs": [
+          {
+            "w": 292,
+            "h": 148
+          },
+          {
+            "w": 292,
+            "h": 148
+          },
+          {
+            "w": 292,
+            "h": 148
+          },
+          {
+            "w": 292,
+            "h": 148
+          },
+          {
+            "w": 292,
+            "h": 148
+          }
+        ],
+        "summaryAbove": true
+      }
+    },
+    {
+      "name": "3D height increases over supplied 1.1.1 at 1600px",
+      "status": "PASS",
+      "detail": {
+        "resolution": [
+          1600,
+          1000
+        ],
+        "baseline111": {
+          "window": [
+            1600,
+            1000
+          ],
+          "viewport": {
+            "width": 1208,
+            "height": 575,
+            "top": 230,
+            "bottom": 805
+          },
+          "summary": {
+            "top": 883,
+            "bottom": 958,
+            "height": 75
+          },
+          "pageWidth": 1600
+        },
+        "release120": {
+          "window": [
+            1600,
+            1000
+          ],
+          "viewport": {
+            "width": 1056,
+            "height": 691.703125,
+            "top": 210.296875,
+            "bottom": 902
+          },
+          "summary": {
+            "top": 173.296875,
+            "bottom": 202.296875,
+            "height": 29
+          },
+          "pageWidth": 1600
+        },
+        "heightGain": 116.703125
+      }
+    },
+    {
+      "name": "3D height increases over supplied 1.1.1 at 1366px",
+      "status": "PASS",
+      "detail": {
+        "resolution": [
+          1366,
+          768
+        ],
+        "baseline111": {
+          "window": [
+            1366,
+            768
+          ],
+          "viewport": {
+            "width": 974,
+            "height": 343,
+            "top": 230,
+            "bottom": 573
+          },
+          "summary": {
+            "top": 651,
+            "bottom": 726,
+            "height": 75
+          },
+          "pageWidth": 1366
+        },
+        "release120": {
+          "window": [
+            1366,
+            768
+          ],
+          "viewport": {
+            "width": 862,
+            "height": 459.703125,
+            "top": 210.296875,
+            "bottom": 670
+          },
+          "summary": {
+            "top": 173.296875,
+            "bottom": 202.296875,
+            "height": 29
+          },
+          "pageWidth": 1366
+        },
+        "heightGain": 116.703125
+      }
+    },
+    {
+      "name": "No browser errors during held-input/live-plot release checks",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "layouts": [
+    {
+      "width": 1920,
+      "scroll": 1920,
+      "sideBySide": true,
+      "allPlots": true,
+      "graphs": [
+        {
+          "w": 289.734375,
+          "h": 126
+        },
+        {
+          "w": 289.734375,
+          "h": 126
+        },
+        {
+          "w": 289.734375,
+          "h": 126
+        },
+        {
+          "w": 289.734375,
+          "h": 126
+        },
+        {
+          "w": 289.734375,
+          "h": 126
+        }
+      ],
+      "summaryAbove": true
+    },
+    {
+      "width": 1600,
+      "scroll": 1600,
+      "sideBySide": true,
+      "allPlots": true,
+      "graphs": [
+        {
+          "w": 249.296875,
+          "h": 126
+        },
+        {
+          "w": 249.296875,
+          "h": 126
+        },
+        {
+          "w": 249.296875,
+          "h": 126
+        },
+        {
+          "w": 249.296875,
+          "h": 126
+        },
+        {
+          "w": 249.296875,
+          "h": 126
+        }
+      ],
+      "summaryAbove": true
+    },
+    {
+      "width": 1440,
+      "scroll": 1440,
+      "sideBySide": true,
+      "allPlots": true,
+      "graphs": [
+        {
+          "w": 228.015625,
+          "h": 126
+        },
+        {
+          "w": 228.015625,
+          "h": 126
+        },
+        {
+          "w": 228.015625,
+          "h": 126
+        },
+        {
+          "w": 228.015625,
+          "h": 126
+        },
+        {
+          "w": 228.015625,
+          "h": 126
+        }
+      ],
+      "summaryAbove": true
+    },
+    {
+      "width": 1366,
+      "scroll": 1366,
+      "sideBySide": true,
+      "allPlots": true,
+      "graphs": [
+        {
+          "w": 228.015625,
+          "h": 126
+        },
+        {
+          "w": 228.015625,
+          "h": 126
+        },
+        {
+          "w": 228.015625,
+          "h": 126
+        },
+        {
+          "w": 228.015625,
+          "h": 126
+        },
+        {
+          "w": 228.015625,
+          "h": 126
+        }
+      ],
+      "summaryAbove": true
+    },
+    {
+      "width": 1280,
+      "scroll": 1280,
+      "sideBySide": true,
+      "allPlots": true,
+      "graphs": [
+        {
+          "w": 228.015625,
+          "h": 126
+        },
+        {
+          "w": 228.015625,
+          "h": 126
+        },
+        {
+          "w": 228.015625,
+          "h": 126
+        },
+        {
+          "w": 228.015625,
+          "h": 126
+        },
+        {
+          "w": 228.015625,
+          "h": 126
+        }
+      ],
+      "summaryAbove": true
+    },
+    {
+      "width": 1201,
+      "scroll": 1201,
+      "sideBySide": true,
+      "allPlots": true,
+      "graphs": [
+        {
+          "w": 228.015625,
+          "h": 126
+        },
+        {
+          "w": 228.015625,
+          "h": 126
+        },
+        {
+          "w": 228.015625,
+          "h": 126
+        },
+        {
+          "w": 228.015625,
+          "h": 126
+        },
+        {
+          "w": 228.015625,
+          "h": 126
+        }
+      ],
+      "summaryAbove": true
+    },
+    {
+      "width": 1200,
+      "scroll": 1200,
+      "sideBySide": true,
+      "allPlots": true,
+      "graphs": [
+        {
+          "w": 606,
+          "h": 150
+        },
+        {
+          "w": 606,
+          "h": 150
+        },
+        {
+          "w": 606,
+          "h": 150
+        },
+        {
+          "w": 606,
+          "h": 150
+        },
+        {
+          "w": 606,
+          "h": 150
+        }
+      ],
+      "summaryAbove": true
+    },
+    {
+      "width": 820,
+      "scroll": 820,
+      "sideBySide": true,
+      "allPlots": true,
+      "graphs": [
+        {
+          "w": 397,
+          "h": 150
+        },
+        {
+          "w": 397,
+          "h": 150
+        },
+        {
+          "w": 397,
+          "h": 150
+        },
+        {
+          "w": 397,
+          "h": 150
+        },
+        {
+          "w": 397,
+          "h": 150
+        }
+      ],
+      "summaryAbove": true
+    },
+    {
+      "width": 600,
+      "scroll": 600,
+      "sideBySide": true,
+      "allPlots": true,
+      "graphs": [
+        {
+          "w": 295,
+          "h": 150
+        },
+        {
+          "w": 295,
+          "h": 150
+        },
+        {
+          "w": 295,
+          "h": 150
+        },
+        {
+          "w": 295,
+          "h": 150
+        },
+        {
+          "w": 295,
+          "h": 150
+        }
+      ],
+      "summaryAbove": true
+    },
+    {
+      "width": 521,
+      "scroll": 521,
+      "sideBySide": true,
+      "allPlots": true,
+      "graphs": [
+        {
+          "w": 251.5625,
+          "h": 150
+        },
+        {
+          "w": 251.5625,
+          "h": 150
+        },
+        {
+          "w": 251.5625,
+          "h": 150
+        },
+        {
+          "w": 251.5625,
+          "h": 150
+        },
+        {
+          "w": 251.5625,
+          "h": 150
+        }
+      ],
+      "summaryAbove": true
+    },
+    {
+      "width": 520,
+      "scroll": 520,
+      "sideBySide": false,
+      "allPlots": true,
+      "graphs": [
+        {
+          "w": 492,
+          "h": 148
+        },
+        {
+          "w": 492,
+          "h": 148
+        },
+        {
+          "w": 492,
+          "h": 148
+        },
+        {
+          "w": 492,
+          "h": 148
+        },
+        {
+          "w": 492,
+          "h": 148
+        }
+      ],
+      "summaryAbove": true
+    },
+    {
+      "width": 390,
+      "scroll": 390,
+      "sideBySide": false,
+      "allPlots": true,
+      "graphs": [
+        {
+          "w": 362,
+          "h": 148
+        },
+        {
+          "w": 362,
+          "h": 148
+        },
+        {
+          "w": 362,
+          "h": 148
+        },
+        {
+          "w": 362,
+          "h": 148
+        },
+        {
+          "w": 362,
+          "h": 148
+        }
+      ],
+      "summaryAbove": true
+    },
+    {
+      "width": 320,
+      "scroll": 320,
+      "sideBySide": false,
+      "allPlots": true,
+      "graphs": [
+        {
+          "w": 292,
+          "h": 148
+        },
+        {
+          "w": 292,
+          "h": 148
+        },
+        {
+          "w": 292,
+          "h": 148
+        },
+        {
+          "w": 292,
+          "h": 148
+        },
+        {
+          "w": 292,
+          "h": 148
+        }
+      ],
+      "summaryAbove": true
+    }
+  ],
+  "baselineLayoutComparisons": [
+    {
+      "resolution": [
+        1600,
+        1000
+      ],
+      "baseline111": {
+        "window": [
+          1600,
+          1000
+        ],
+        "viewport": {
+          "width": 1208,
+          "height": 575,
+          "top": 230,
+          "bottom": 805
+        },
+        "summary": {
+          "top": 883,
+          "bottom": 958,
+          "height": 75
+        },
+        "pageWidth": 1600
+      },
+      "release120": {
+        "window": [
+          1600,
+          1000
+        ],
+        "viewport": {
+          "width": 1056,
+          "height": 691.703125,
+          "top": 210.296875,
+          "bottom": 902
+        },
+        "summary": {
+          "top": 173.296875,
+          "bottom": 202.296875,
+          "height": 29
+        },
+        "pageWidth": 1600
+      },
+      "heightGain": 116.703125
+    },
+    {
+      "resolution": [
+        1366,
+        768
+      ],
+      "baseline111": {
+        "window": [
+          1366,
+          768
+        ],
+        "viewport": {
+          "width": 974,
+          "height": 343,
+          "top": 230,
+          "bottom": 573
+        },
+        "summary": {
+          "top": 651,
+          "bottom": 726,
+          "height": 75
+        },
+        "pageWidth": 1366
+      },
+      "release120": {
+        "window": [
+          1366,
+          768
+        ],
+        "viewport": {
+          "width": 862,
+          "height": 459.703125,
+          "top": 210.296875,
+          "bottom": 670
+        },
+        "summary": {
+          "top": 173.296875,
+          "bottom": 202.296875,
+          "height": 29
+        },
+        "pageWidth": 1366
+      },
+      "heightGain": 116.703125
+    }
+  ],
+  "mode": "about:blank source injection; URL navigation is not validated",
+  "limits": "Chromium emulation, not physical GPU/device certification. Root/HTTP navigation and remote deployment are separate checks."
+}

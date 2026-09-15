@@ -1,4 +1,4 @@
-/* Smart Cart Autonomy Lab 1.1.1. UI and IO only.
+/* Smart Cart Autonomy Lab 1.2.0. UI and IO only.
  * SANE light workspace; no device control, sockets, analytics or network requests. */
 'use strict';
 (()=>{
@@ -40,7 +40,6 @@ function exportData(kind){const stamp=new Date().toISOString().replace(/[:.]/g,'
 function fitCanvas(canvas){let r=canvas.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2),w=Math.round(r.width*d),h=Math.round(r.height*d);if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}const ctx=canvas.getContext('2d');ctx.setTransform(d,0,0,d,0,0);return{ctx,w:r.width,h:r.height};}
 function chart(id,series,min=0,max=null) {
  const canvas=$(id);
- if(canvas.closest('details:not([open])'))return;
  const {ctx:c,w,h}=fitCanvas(canvas);if(w<1||h<1)return;
  c.clearRect(0,0,w,h);
  const values=series.flatMap(s=>s.data).filter(v=>v!==null&&Number.isFinite(v));
@@ -94,7 +93,7 @@ function updateUI(){if(!sim)return;if(view&&$('cameraSelect').value!==view.mode)
  let ev=sim.events.slice(0,7),signature=ev.map(e=>e.t+e.type+e.message).join('');if($('events').dataset.key!==signature){$('events').dataset.key=signature;$('events').replaceChildren();for(let e of ev){let row=document.createElement('div'),tm=document.createElement('time'),text=document.createElement('span');row.className='event-entry';tm.textContent=number(e.t,1)+'s';text.textContent=e.type==='STATE'?(states[e.message]?.[0]||e.message):e.message;row.append(tm,text);$('events').appendChild(row);}}
 }
 function labels(){for(let[id,p]of[['cartLabel',[sim.cart.x,sim.cart.y+1.17,sim.cart.z+.2]],['userLabel',[sim.user.x,sim.user.y+1.98,sim.user.z]]]){let q=view.renderer.project(p),e=$(id);e.hidden=!q?.visible;if(q?.visible){const w=$('scene').clientWidth,h=$('scene').clientHeight;e.style.left=M.clamp(q.x,e.offsetWidth/2+4,w-e.offsetWidth/2-4)+'px';e.style.top=M.clamp(q.y,e.offsetHeight+4,h-4)+'px';}}}
-function inputs(){if(sim.paused||$('helpDialog').open||$('settingsDrawer').open)return sim.setInput(0,0);const focused=document.activeElement,editing=focused&&focused.closest('input,select,textarea,[contenteditable=true],summary,a,.telemetry');if(editing)return sim.setInput(0,0);const active=k=>keys.has(k),up=active('ArrowUp')||active('KeyW')||touch.has('up'),down=active('ArrowDown')||active('KeyS')||touch.has('down'),left=active('ArrowLeft')||active('KeyA')||touch.has('left'),right=active('ArrowRight')||active('KeyD')||touch.has('right');let d=view.screenVector(Number(right)-Number(left),Number(up)-Number(down));if(d.x!==sim.input.x||d.z!==sim.input.z)sim.setInput(d.x,d.z);}
+function inputs(){if(sim.paused||$('helpDialog').open||$('settingsDrawer').open)return sim.setInput(0,0);const focused=document.activeElement,editing=focused&&focused.closest('input,select,textarea,[contenteditable=true],summary,a,.telemetry');if(editing)return sim.setInput(0,0);const active=k=>keys.has(k),up=active('ArrowUp')||active('KeyW')||touch.has('up'),down=active('ArrowDown')||active('KeyS')||touch.has('down'),left=active('ArrowLeft')||active('KeyA')||touch.has('left'),right=active('ArrowRight')||active('KeyD')||touch.has('right');let d=M.controlVector(Number(right)-Number(left),Number(up)-Number(down));if(d.x!==sim.input.x||d.z!==sim.input.z)sim.setInput(d.x,d.z);}
 function frame(now){const dt=Math.max(0,Math.min(.1,(now-lastFrame)/1000));lastFrame=now;try{inputs();if(!sim.paused){accumulator+=dt;let n=0;while(accumulator>=SC.constants.step&&n<6){sim.step();accumulator-=SC.constants.step;n++;}}if(renderEnabled){view.render(dt);labels();}if(now-lastUI>100){updateUI();lastUI=now;}frameCounter++;if(now-fpsStart>1500){let seconds=(now-fpsStart)/1000;set('fps',Math.round(frameCounter/seconds)+' FPS / WEBGL 2');set('simulationRate','모의 시간 '+number((sim.time-rateStart)/seconds,2)+'×');rateStart=sim.time;frameCounter=0;fpsStart=now;}requestAnimationFrame(frame);}catch(error){console.error(error);fatal(error);}}
 function fatal(error){$('loading').hidden=false;$('loading').classList.add('error');$('loading').querySelector('h2').textContent='시뮬레이션 오류';$('loading').querySelector('p').textContent=String(error.message||error);if(sim)sim.paused=true;}
 SC.app={get sim(){return sim;},set sim(v){sim=v;},get view(){return view;},set view(v){view=v;},reset,pause,exportData,states,setRenderEnabled:v=>renderEnabled=v,step:n=>{const paused=sim.paused;sim.paused=false;for(let i=0;i<n;i++)sim.step();sim.paused=paused;view.render(0);labels();updateUI();},setInput:(x,z)=>sim.setInput(x,z)};
@@ -113,7 +112,7 @@ try{
  document.addEventListener('pointerdown',e=>{if(!$('exportMenu').contains(e.target)&&!$('exportBtn').contains(e.target))closeExport();});
  document.addEventListener('focusin',e=>{if(!$('exportMenu').hidden&&!$('exportMenu').contains(e.target)&&!$('exportBtn').contains(e.target))closeExport();});
  window.addEventListener('resize',()=>closeExport());
- for(const details of document.querySelectorAll('.trend-details'))details.addEventListener('toggle',()=>{if(details.open)updateUI();});
+ for(const details of document.querySelectorAll('.pointcloud-details'))details.addEventListener('toggle',()=>{if(details.open)updateUI();});
  $('settingsDrawer').addEventListener('close',()=>{$('settingsDrawer').hidden=true;$('settingsBtn').setAttribute('aria-expanded','false');keys.clear();touch.clear();sim.setInput(0,0);$('settingsBtn').focus({preventScroll:true});});
  $('importBtn').addEventListener('click',()=>{$('importFile').click();closeExport();});$('importFile').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{if(f.size>1024*1024)throw new Error('설정 파일은 1 MB 이하여야 합니다.');const data=JSON.parse(await f.text());reset(data.config||data);toast('환경 설정을 불러왔습니다.');}catch(error){toast('설정 불러오기 실패: '+error.message);}e.target.value='';});
  $('helpBtn').addEventListener('click',()=>{closeExport();pause(true);$('helpDialog').showModal();});$('helpDialog').addEventListener('close',()=>{$('helpBtn').focus({preventScroll:true});});$('closeHelp').addEventListener('click',()=>$('helpDialog').close());$('helpDialog').addEventListener('click',e=>{if(e.target===$('helpDialog')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close();}});

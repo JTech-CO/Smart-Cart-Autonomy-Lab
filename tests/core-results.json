@@ -1,19 +1,19 @@
 {
   "suite": "Smart Cart Autonomy Lab core regression",
   "node": "v22.16.0",
-  "executedAt": "2026-09-15T17:01:46.935Z",
+  "executedAt": "2026-09-15T19:35:27.239Z",
   "passed": 30,
   "failed": 0,
   "tests": [
     {
       "name": "Config rejects out-of-range and invalid typed values",
       "status": "PASS",
-      "ms": 0
+      "ms": 1
     },
     {
       "name": "Seeded world and sensor noise are deterministic",
       "status": "PASS",
-      "ms": 284
+      "ms": 289
     },
     {
       "name": "Obstacle counts and independent type selection",
@@ -23,42 +23,42 @@
     {
       "name": "Keyboard input normalization and configured speed",
       "status": "PASS",
-      "ms": 5
+      "ms": 7
     },
     {
       "name": "Pause freezes simulation time and dynamics",
       "status": "PASS",
-      "ms": 5
+      "ms": 3
     },
     {
       "name": "Stationary target is approached and held without contact",
       "status": "PASS",
-      "ms": 171
+      "ms": 186
     },
     {
       "name": "Moving user is followed from sensor estimates, then cart stops",
       "status": "PASS",
-      "ms": 332
+      "ms": 375
     },
     {
       "name": "Columns trigger steering and are passed autonomously",
       "status": "PASS",
-      "ms": 866
+      "ms": 903
     },
     {
       "name": "Mixed dense environment: progressing, replanning, no contact in reference route",
       "status": "PASS",
-      "ms": 1163
+      "ms": 1199
     },
     {
       "name": "Independent pedestrians move, fixed columns do not",
       "status": "PASS",
-      "ms": 67
+      "ms": 65
     },
     {
       "name": "Low boxes appear in forward ToF but not an elevated planar LiDAR",
       "status": "PASS",
-      "ms": 6
+      "ms": 7
     },
     {
       "name": "Ray-cast occlusion returns the first surface",
@@ -68,22 +68,22 @@
     {
       "name": "UWB records line-of-sight obstruction and reduced quality",
       "status": "PASS",
-      "ms": 10
+      "ms": 11
     },
     {
       "name": "Initial rear-side range measurements do not invent an unambiguous bearing",
       "status": "PASS",
-      "ms": 10
+      "ms": 13
     },
     {
       "name": "Out-of-range UWB has no fix",
       "status": "PASS",
-      "ms": 3
+      "ms": 6
     },
     {
       "name": "UWB failure initiates safe stop",
       "status": "PASS",
-      "ms": 84
+      "ms": 100
     },
     {
       "name": "LIDAR failure initiates safe stop",
@@ -93,32 +93,32 @@
     {
       "name": "TOF failure initiates safe stop",
       "status": "PASS",
-      "ms": 75
+      "ms": 80
     },
     {
       "name": "E-stop is latched and wheel motion ceases",
       "status": "PASS",
-      "ms": 119
+      "ms": 136
     },
     {
       "name": "Ascending stairs stop the cart; no wheel spin after settling",
       "status": "PASS",
-      "ms": 714
+      "ms": 821
     },
     {
       "name": "Excessive grade is a known-map no-go area",
       "status": "PASS",
-      "ms": 603
+      "ms": 590
     },
     {
       "name": "Mild up and downhill match terrain height and finite motor values",
       "status": "PASS",
-      "ms": 950
+      "ms": 946
     },
     {
       "name": "Finite modeled parking brake holds a supported slope",
       "status": "PASS",
-      "ms": 113
+      "ms": 109
     },
     {
       "name": "Ackermann front-wheel angles differ on a turn",
@@ -143,17 +143,17 @@
     {
       "name": "Flutter telemetry has compatible fields, null cliff, explicit synthetic semantics",
       "status": "PASS",
-      "ms": 34
+      "ms": 36
     },
     {
       "name": "No-return ranges are null in ToF and zero-coded in LiDAR wire output",
       "status": "PASS",
-      "ms": 4
+      "ms": 5
     },
     {
       "name": "Procedural cart has independent animated meshes and finite geometry",
       "status": "PASS",
-      "ms": 228
+      "ms": 220
     }
   ]
 }

@@ -1,4 +1,4 @@
-# Simulation model 1.1.1
+# Simulation model 1.2.0
 
 [한국어](MODEL-KR.md) · [Sources](SOURCES.md) · [QA](QA.md)
 
@@ -8,7 +8,9 @@ The browser runs a 60 Hz fixed-step world/vehicle model, a 20 Hz controller/UWB/
 
 ## Input and camera frames
 
-World axes are metres, Y up, +Z forward at zero yaw. The orbit eye is proportional to `(sin(a) cos(e), sin(e), -cos(a) cos(e))` relative to its target. Consequently screen-right on the ground is `(-cos(a), -sin(a))` in X/Z, while screen-up is `(-sin(a), cos(a))`. Keyboard/touch motion uses those axes and normalizes diagonal speed. Rightward drag increases azimuth; upward drag increases elevation. Form fields retain native input. Toolbar arrows may move the user, but toolbar Space/Enter retain button activation. The camera itself never rotates the vehicle.
+World axes are metres, Y up and +Z forward at zero yaw. User controls are a fixed terrain mapping: W/up = +Z, S/down = -Z, A/left = +X, D/right = -X. Left/right refer to the initial rear observer, whose screen-right points along -X. `SC.math.controlVector(right, forward)` returns `(-right, forward)` in X/Z without accessing View state. Diagonal speed is normalized by `Simulation.setInput`.
+
+Camera orbit, zoom, top/detail presets and camera reset do not rotate these axes, including while a key remains held. The person faces resolved travel, not camera bearing. The earlier 1.1.1 camera-relative control contract is deliberately superseded. Native form input and focus/pause safety remain unchanged.
 
 ## Sensors and acquired track continuity
 
@@ -61,7 +63,7 @@ Rotational wheel animation follows signed travelled distance; instantaneous RPM 
 
 The six-step staircase is six 0.17 m rises with 0.32 m treads and no side bypass. Stairs and illustrative slopes above 8 degrees are known-map no-go areas for the cart; an independent physical footprint constraint also prevents penetration. The user may climb. This is not proof of stair or cliff detection with forward ToF.
 
-Pedestrians keep their existing individual-goal/repulsion movement. Their articulated visual pose now samples support over each shoe sole, aligns the shoe with local terrain and adds swing clearance. A two-bone IK chain preserves the 0.43 m thigh and 0.40 m shin lengths, lowering the pelvis only when required for reach. The tagged user uses the same calculation. This avoids the old rigid-leg geometry cutting into a slope, but is not foot-pressure simulation, perfect planted-foot motion or biomechanics.
+Pedestrians keep their existing individual-goal/repulsion movement. Their facing, velocity and gait phase are updated from post-contact displacement, so a blocked person does not animate intended travel. Both user and autonomous pedestrians advance phase at 7.5 rad per travelled metre. During phase 0 to pi a foot swings forward with a smoothstep trajectory; during pi to 2*pi it moves linearly backward relative to the body. The half-stride is pi/(2*7.5) metres, cancelling body translation in straight, steady stance. Lift occurs only in forward swing; arms counter-swing. Their articulated visual pose samples support over each shoe sole, aligns the shoe with local terrain and adds swing clearance. A two-bone IK chain preserves the 0.43 m thigh and 0.40 m shin lengths, lowering the pelvis only when required for reach. The tagged user uses the same calculation. This avoids the old rigid-leg geometry cutting into a slope, but is not foot-pressure simulation, perfect planted-foot motion or biomechanics.
 
 Boxes translate under friction/contact impulse; rotation, tipping and deformation remain omitted. The cart hardware construction is unchanged from 1.1.0. Servo linkage depiction is still illustrative rather than a solved four-bar mechanism.
 
@@ -69,4 +71,4 @@ Boxes translate under friction/contact impulse; rotation, tipping and deformatio
 
 The SANE light-only layout is retained. Darkness affects the 3D environment, not the UI theme. Native WebGL uses procedural PBR-style shading and shadows, not path tracing or calibrated lighting. Sensor graphics represent modeled sampling/radio bounds rather than safety certification.
 
-The existing drive panel adds signed acceleration and gravity force, with drive/brake forces in its disclosure. CSV/session samples add `acceleration_mps2`, `gravity_force_N`, `motor_force_N`, `rolling_force_N`, `brake_force_N`, `effective_mass_kg` and `parking_brake`. Flutter-compatible fields are unchanged; the `sim` extension carries signed acceleration/force values and a corrected finite-brake assumption label. Histories retain up to 30 simulated minutes, charts 12 seconds. No WebSocket, cloud storage, real vehicle transport or replay UI is added.
+Driving summaries are in the compact upper band. Each sensor/drive section has current numeric values on the left and a live time plot on the right, sharing one vertical scroll. All five graphs remain displayed without disclosure. Small phones reflow the graph below values. The drive values include signed acceleration, gravity, drive and brake force. CSV/session samples add `acceleration_mps2`, `gravity_force_N`, `motor_force_N`, `rolling_force_N`, `brake_force_N`, `effective_mass_kg` and `parking_brake`. Flutter-compatible fields are unchanged; the `sim` extension carries signed acceleration/force values and a corrected finite-brake assumption label. Histories retain up to 30 simulated minutes, charts 12 seconds. No WebSocket, cloud storage, real vehicle transport or replay UI is added.

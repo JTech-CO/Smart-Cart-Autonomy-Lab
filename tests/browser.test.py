@@ -1,4 +1,4 @@
-"""UI, WebGL and input regression for Smart Cart Autonomy Lab 1.1.1.
+"""UI, WebGL and input regression for Smart Cart Autonomy Lab 1.2.0.
 
 Requires Python Playwright and Chromium, for testing only. The app has no build
 or runtime dependencies. Use DISPLAY=:99 with a running Xvfb when ANGLE needs it.
@@ -49,12 +49,12 @@ with sync_playwright() as pw:
     start(page)
     gpu=page.evaluate('''(()=>{const r=SC.app.view.renderer,g=r.gl,e=g.getExtension('WEBGL_debug_renderer_info');return {version:g.getParameter(g.VERSION),renderer:e?g.getParameter(e.UNMASKED_RENDERER_WEBGL):g.getParameter(g.RENDERER),triangles:r.triangles,draws:r.drawCalls,error:g.getError()}})()''')
     check('Actual WebGL 2 scene and shader rendering',gpu['error']==0 and gpu['triangles']>50000,gpu)
-    check('Version appears in document and interface','1.1.1' in page.title() and page.locator('.version').inner_text()=='1.1.1')
+    check('Version appears in document and interface','1.2.0' in page.title() and page.locator('.version').inner_text()=='1.2.0')
     check('Light-only interface with explicit light color scheme',page.evaluate('getComputedStyle(document.documentElement).colorScheme==="light" && getComputedStyle(document.body).backgroundColor==="rgb(255, 255, 255)"'))
     check('No duplicate document IDs',page.evaluate('(()=>{let a=[...document.querySelectorAll("[id]")].map(e=>e.id);return a.length===new Set(a).size})()'))
-    check('Primary viewport receives most workspace width',page.evaluate('document.querySelector(".viewport").clientWidth/innerWidth>=.70'))
+    check('Primary viewport receives the majority of width beside dual telemetry',page.evaluate('document.querySelector(".viewport").clientWidth/innerWidth>=.60'))
     check('No UI chrome overlays the 3D canvas',page.evaluate('(()=>{const c=document.querySelector(".viewport").getBoundingClientRect();return [".stage-heading",".stage-controls",".statusbar"].every(s=>{const r=document.querySelector(s).getBoundingClientRect();return r.bottom<=c.top||r.top>=c.bottom})})()'))
-    check('Diagnostics are initially collapsed without hiding current data',page.locator('.trend-details[open]').count()==0 and page.locator('#uwbLeft').is_visible())
+    check('All time plots are displayed without disclosure',page.locator('.live-trend').count()==5 and page.locator('.live-trend details').count()==0 and page.locator('#uwbLeft').is_visible() and page.locator('#uwbChart').is_visible())
     check('Motor readings use a semantic table',page.locator('table.drive-table th[scope=row]').count()==4)
     fonts=page.evaluate('''(()=>{let small=[];for(const e of document.querySelectorAll('button,select,label,summary,small,p,dt,dd,td,th,h1,h2,h3,.metric-pair span,.metric-triple span')){if(e.checkVisibility()&&parseFloat(getComputedStyle(e).fontSize)<14)small.push({tag:e.tagName,id:e.id,size:getComputedStyle(e).fontSize})}return small})()''')
     check('Visible essential text is at least 14 CSS px',not fonts,fonts)
@@ -108,9 +108,9 @@ with sync_playwright() as pw:
     page.locator('#closeSettings').click();page.evaluate('SC.app.step(180)')
     check('UWB fault injection retains stop behavior',page.evaluate('SC.app.sim.state==="TAG_LOST"&&SC.app.sim.cart.v===0'))
     # Light graphs show real history with explicit axis units and distinguish missing from zero.
-    page.locator('.sensor-panel').nth(0).locator('summary').click();page.wait_for_timeout(120)
-    check('LiDAR disclosure opens real point cloud and chart',page.locator('#radar').is_visible() and page.evaluate('document.getElementById("radar").width>100&&document.getElementById("lidarChart").width>200'))
-    page.locator('.sensor-panel').nth(2).locator('summary').click();page.wait_for_timeout(120)
+    page.locator('.pointcloud-details > summary').click();page.wait_for_timeout(120)
+    check('Supplemental LiDAR disclosure opens real point cloud; chart is already live',page.locator('#radar').is_visible() and page.evaluate('document.getElementById("radar").width>100&&document.getElementById("lidarChart").width>200'))
+    page.locator('#tofChart').scroll_into_view_if_needed();page.wait_for_timeout(120)
     check('ToF chart has millimeter labels and millimeter-scaled history', '밀리미터' in page.locator('#tofChart').get_attribute('aria-label') and "v*1000" in (SITE/'js/app.js').read_text())
     page.evaluate('SC.app.sim.sensors.fault.tof=true;SC.app.step(18)')
     check('Invalid measurements display missing instead of zero',page.locator('#tofLeft').inner_text().startswith('--') and page.locator('#tofLeftStatus').inner_text()=='측정 무효')
@@ -161,14 +161,14 @@ with sync_playwright() as pw:
         check('Readable responsive layout '+str(width)+'px',r['scroll']<=width and r['canvasHeight']>=160 and r['estop'],r)
     page.set_viewport_size({'width':1600,'height':1000})
     # Refresh previews from actual, unmodified simulation samples.
-    page.evaluate('document.querySelectorAll(".trend-details").forEach(e=>e.open=false);SC.app.reset(SC.defaults);SC.app.pause(true);SC.app.sim.setInput(-.12,1);SC.app.step(270);SC.app.view.setCamera("follow");document.querySelector(".telemetry-scroll").scrollTop=0')
+    page.evaluate('document.querySelectorAll(".pointcloud-details").forEach(e=>e.open=false);SC.app.reset(SC.defaults);SC.app.pause(true);SC.app.sim.setInput(-.12,1);SC.app.step(270);SC.app.view.setCamera("follow");document.querySelector(".telemetry-scroll").scrollTop=0')
     frozen_render(page);page.wait_for_timeout(3800)
     page.evaluate('document.activeElement.blur()')
     page.screenshot(path=str(ASSETS/'preview-desktop.png'))
     page.locator('#cameraSelect').select_option('detail');frozen_render(page)
     page.screenshot(path=str(ASSETS/'preview-cart.png'))
     page.locator('#cameraSelect').select_option('follow');frozen_render(page)
-    page.locator('.sensor-panel').nth(0).locator('summary').click();page.locator('.sensor-panel').nth(1).locator('summary').click()
+    page.locator('.pointcloud-details > summary').click()
     page.locator('.telemetry-scroll').evaluate('(e)=>e.scrollTop=0');page.screenshot(path=str(ASSETS/'preview-diagnostics.png'))
     page.evaluate('document.querySelector(".advanced-settings").open=false;document.querySelector(".fault-details").open=false')
     page.locator('#settingsBtn').click();page.locator('.dialog-body').evaluate('(e)=>e.scrollTop=0');page.screenshot(path=str(ASSETS/'preview-settings.png'));page.locator('#closeSettings').click()
@@ -190,7 +190,7 @@ with sync_playwright() as pw:
     mobile.screenshot(path=str(ASSETS/'preview-mobile.png'),full_page=True)
     check('No JS or WebGL errors during component regression',not errors,errors)
     check('No external runtime asset requests',not requests if not os.environ.get('SC_TEST_URL') else all(u.startswith(os.environ['SC_TEST_URL']) for u in requests),requests)
-    data={'suite':'Browser UI and WebGL regression','version':'1.1.1','executedAt':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),
+    data={'suite':'Browser UI and WebGL regression','version':'1.2.0','executedAt':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),
         'mode':'static URL' if os.environ.get('SC_TEST_URL') else 'about:blank with unchanged local source contents injected by Playwright',
         'browser':browser.version,'gpu':gpu,'passed':sum(r['status']=='PASS' for r in results),'failed':sum(r['status']=='FAIL' for r in results),
         'tests':results,'nativeDownloads':exported,'layouts':layouts,

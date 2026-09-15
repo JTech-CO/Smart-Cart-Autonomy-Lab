@@ -2,20 +2,22 @@
 
 ## 파일 배치
 
-이 패키지는 기존 저장소에 **추가하는 구성**이다. 기존 Flutter `lib/`, `web/`, `android/`, `windows/`, `pubspec.yaml`은 손대지 않는다. 이전 프로젝트의 동명 파일이 이미 있으면 변경 내용을 비교한 뒤 합친다. 루트 README도 원본을 덮지 않도록 `README-SIMULATION.md`와 `README-SIMULATION-KR.md`로 제공한다.
+이 패키지는 기존 저장소에 **추가하는 구성**이다. 기존 Flutter `lib/`, `web/`, `android/`, `windows/`, `pubspec.yaml`은 손대지 않는다. 이전 프로젝트의 동명 파일이 이미 있으면 변경 내용을 비교한 뒤 합친다. 1.2.0부터 루트 문서는 `README.md`와 `README-KR.md`로 제공한다. 기존 루트 README를 교체하므로 Flutter 소개를 유지해야 하면 먼저 병합·보관한다. 이전의 README-SIMULATION 파일이 저장소에 남아 있으면 삭제한다.
 
 ```text
 smart_cart_app/
   .github/workflows/deploy-simulator.yml
   .nojekyll
   index.html
-  README-SIMULATION.md
-  README-SIMULATION-KR.md
+  README.md
+  README-KR.md
   simulator/
     index.html
     css/app.css
     js/math.js
     js/world.js
+    js/kinematics.js
+    js/dynamics.js
     js/sensors.js
     js/navigation.js
     js/simulation.js
@@ -85,8 +87,7 @@ Actions 방식과 브랜치 방식을 동시에 운영하려 하지 않는다. �
 
 ## 테스트
 
-`node tests/core.test.cjs
-node tests/bugfix.test.cjs`는 외부 모듈 없이 엔진 회귀 테스트를 수행한다. GitHub Actions 배포 전에 이 테스트가 실행된다. `tests/browser.test.py`는 별도의 Playwright 설치가 있는 개발 환경용이며 배포에 필요하지 않다. QA 문서는 테스트 환경에서 직접 브라우저 URL 탐색을 확인하지 못한 제한과 별도로 실제 파일 저장 완료를 확인한 결과를 기록한다.
+`node tests/core.test.cjs`, `node tests/bugfix.test.cjs`, `node tests/release120.test.cjs`는 외부 모듈 없이 엔진 회귀 테스트를 수행한다. GitHub Actions 배포 전에 이 테스트가 실행된다. `tests/browser.test.py`는 별도의 Playwright 설치가 있는 개발 환경용이며 배포에 필요하지 않다. QA 문서는 테스트 환경에서 직접 브라우저 URL 탐색을 확인하지 못한 제한과 별도로 실제 파일 저장 완료를 확인한 결과를 기록한다.
 
 ## 공식 문서
 
@@ -94,4 +95,4 @@ node tests/bugfix.test.cjs`는 외부 모듈 없이 엔진 회귀 테스트를 �
 - [사용자 지정 Pages 워크플로](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
 
 
-1.1.1은 `simulator/js/kinematics.js`, `simulator/js/dynamics.js`도 필요합니다. 기존 simulator 폴더 전체를 교체하여 오래된 JS와 새 HTML이 혼합되지 않도록 합니다. 센서·모터의 기존 Flutter 필드는 유지하며, 추가 가속도·힘 값은 `sim` 확장과 CSV/세션에 있습니다.
+1.2.0도 `simulator/js/kinematics.js`, `simulator/js/dynamics.js`도 필요합니다. 기존 simulator 폴더 전체를 교체하여 오래된 JS와 새 HTML이 혼합되지 않도록 합니다. 센서·모터의 기존 Flutter 필드는 유지하며, 추가 가속도·힘 값은 `sim` 확장과 CSV/세션에 있습니다.

@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.2.0 - 2026-09-16
+
+- Move speed/command/follow/odometer/contact summaries above the viewport; compact the working chrome and enlarge scene height.
+- Replace the 1.1.1 camera-relative movement contract with fixed terrain axes for WASD, arrows and touch. Camera orbit/reset no longer changes a held direction.
+- Correct forward swing and backward stance. Use a distance-driven 7.5 rad/m gait for the user and pedestrians; update pedestrian facing/phase from collision-resolved travel. Retain terrain-supported soles and two-bone IK.
+- Show numeric readings and live history side by side. All five time-series graphs are always displayed; only the supplemental point cloud/event history remain disclosures. Small phones reflow, not hide, graphs.
+- Rename root introductions to README.md and README-KR.md and update internal links. Existing root README replacement is now intentional.
+- Retain light UI, offline/static paths, sensor/navigation/vehicle dynamics and telemetry/export interfaces. No remote repository or physical hardware changes.
+
+See [QA](QA.md) for executed tests, adjusted historical assertions and environment limits.
+
 ## 1.1.1 - 2026-09-16
 
 ### Fixed

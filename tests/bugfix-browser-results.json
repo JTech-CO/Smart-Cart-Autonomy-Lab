@@ -1,129 +1,129 @@
 {
-  "suite": "1.1.1 five-defect browser regression",
-  "version": "1.1.1",
-  "executedAt": "2026-09-15T16:58:30Z",
+  "suite": "1.2.0 five-defect browser regression",
+  "version": "1.2.0",
+  "executedAt": "2026-09-15T19:39:01Z",
   "browser": "144.0.7559.96",
   "mode": "about:blank source injection; not URL-entry E2E",
   "passed": 30,
   "failed": 0,
   "tests": [
     {
-      "name": "ArrowLeft moves in its screen direction at orbit 0 deg",
+      "name": "ArrowLeft moves on its fixed terrain axis at orbit 0 deg",
       "status": "PASS",
       "detail": {
-        "pixels": -21.71404421928571
+        "metres": 0.38500000000000023
       }
     },
     {
-      "name": "ArrowRight moves in its screen direction at orbit 0 deg",
+      "name": "ArrowRight moves on its fixed terrain axis at orbit 0 deg",
       "status": "PASS",
       "detail": {
-        "pixels": 39.08527959471428
+        "metres": -0.3675000000000002
       }
     },
     {
-      "name": "ArrowUp moves in its screen direction at orbit 0 deg",
+      "name": "ArrowUp moves on its fixed terrain axis at orbit 0 deg",
       "status": "PASS",
       "detail": {
-        "pixels": -21.240125096765695
+        "metres": 0.3675000000000015
       }
     },
     {
-      "name": "ArrowDown moves in its screen direction at orbit 0 deg",
+      "name": "ArrowDown moves on its fixed terrain axis at orbit 0 deg",
       "status": "PASS",
       "detail": {
-        "pixels": 25.86490768183353
+        "metres": -0.3675000000000015
       }
     },
     {
-      "name": "ArrowLeft moves in its screen direction at orbit 90 deg",
+      "name": "ArrowLeft moves on its fixed terrain axis at orbit 90 deg",
       "status": "PASS",
       "detail": {
-        "pixels": -32.57106632892868
+        "metres": 0.3675000000000002
       }
     },
     {
-      "name": "ArrowRight moves in its screen direction at orbit 90 deg",
+      "name": "ArrowRight moves on its fixed terrain axis at orbit 90 deg",
       "status": "PASS",
       "detail": {
-        "pixels": 26.056853063142967
+        "metres": -0.3675000000000002
       }
     },
     {
-      "name": "ArrowUp moves in its screen direction at orbit 90 deg",
+      "name": "ArrowUp moves on its fixed terrain axis at orbit 90 deg",
       "status": "PASS",
       "detail": {
-        "pixels": -17.82331227149311
+        "metres": 0.3675000000000015
       }
     },
     {
-      "name": "ArrowDown moves in its screen direction at orbit 90 deg",
+      "name": "ArrowDown moves on its fixed terrain axis at orbit 90 deg",
       "status": "PASS",
       "detail": {
-        "pixels": 17.835192200018128
+        "metres": -0.3675000000000015
       }
     },
     {
-      "name": "ArrowLeft moves in its screen direction at orbit 180 deg",
+      "name": "ArrowLeft moves on its fixed terrain axis at orbit 180 deg",
       "status": "PASS",
       "detail": {
-        "pixels": -34.74247075085714
+        "metres": 0.3675000000000002
       }
     },
     {
-      "name": "ArrowRight moves in its screen direction at orbit 180 deg",
+      "name": "ArrowRight moves on its fixed terrain axis at orbit 180 deg",
       "status": "PASS",
       "detail": {
-        "pixels": 32.57106632892851
+        "metres": -0.38500000000000023
       }
     },
     {
-      "name": "ArrowUp moves in its screen direction at orbit 180 deg",
+      "name": "ArrowUp moves on its fixed terrain axis at orbit 180 deg",
       "status": "PASS",
       "detail": {
-        "pixels": -18.967522971602733
+        "metres": 0.38500000000000156
       }
     },
     {
-      "name": "ArrowDown moves in its screen direction at orbit 180 deg",
+      "name": "ArrowDown moves on its fixed terrain axis at orbit 180 deg",
       "status": "PASS",
       "detail": {
-        "pixels": 19.15679046459104
+        "metres": -0.3675000000000015
       }
     },
     {
-      "name": "ArrowLeft moves in its screen direction at orbit -90 deg",
+      "name": "ArrowLeft moves on its fixed terrain axis at orbit -90 deg",
       "status": "PASS",
       "detail": {
-        "pixels": -28.228257485071538
+        "metres": 0.3675000000000002
       }
     },
     {
-      "name": "ArrowRight moves in its screen direction at orbit -90 deg",
+      "name": "ArrowRight moves on its fixed terrain axis at orbit -90 deg",
       "status": "PASS",
       "detail": {
-        "pixels": 30.39966190700011
+        "metres": -0.3675000000000002
       }
     },
     {
-      "name": "ArrowUp moves in its screen direction at orbit -90 deg",
+      "name": "ArrowUp moves on its fixed terrain axis at orbit -90 deg",
       "status": "PASS",
       "detail": {
-        "pixels": -16.67377942551073
+        "metres": 0.3675000000000015
       }
     },
     {
-      "name": "ArrowDown moves in its screen direction at orbit -90 deg",
+      "name": "ArrowDown moves on its fixed terrain axis at orbit -90 deg",
       "status": "PASS",
       "detail": {
-        "pixels": 20.484997035015567
+        "metres": -0.3675000000000015
       }
     },
     {
       "name": "Real right/up mouse drag increases azimuth/elevation and ends capture",
       "status": "PASS",
       "detail": {
-        "a": -0.040000183105468816,
+        "a": -0.03999981689453106,
         "e": 0.9000000000000002,
         "drag": null,
         "focus": "scene"
@@ -135,7 +135,7 @@
       "detail": null
     },
     {
-      "name": "Left movement remains screen-left after a real orbit drag",
+      "name": "Left movement remains fixed +X after a real orbit drag",
       "status": "PASS",
       "detail": null
     },
@@ -188,16 +188,16 @@
       "name": "Rendered walking user has separate above-ground feet on an incline",
       "status": "PASS",
       "detail": {
-        "minimumSoleClearance": 0.006000000000000116,
+        "minimumSoleClearance": 0.005999999999999894,
         "error": 0,
         "footMeshes": 4
       }
     },
     {
-      "name": "Real mobile touch-left moves screen-left after a 90-degree camera turn",
+      "name": "Real mobile touch-left moves fixed +X after a 90-degree camera turn",
       "status": "PASS",
       "detail": {
-        "pixels": -30.486518083877257
+        "metres": 0.42000000000000026
       }
     },
     {

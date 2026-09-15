@@ -21,6 +21,12 @@ SC.math = (() => {
   };
   M.compose=(p,r=[0,0,0])=>M.mul(M.translate(...p),M.mul(M.ry(r[1]),M.mul(M.rx(r[0]),M.rz(r[2]))));
   M.pivot=(p,r)=>M.mul(M.translate(...p),M.mul(r,M.translate(...p.map(v=>-v))));
+  // Fixed terrain controls viewed from the initial rear-facing observer.
+  // With Y up and forward +Z, initial screen-right is -X. No camera state is read.
+  const controlVector=(right,forward)=>({
+    x:-clamp(Number.isFinite(right)?right:0,-1,1),
+    z:clamp(Number.isFinite(forward)?forward:0,-1,1)
+  });
   const dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
   class RNG {
     constructor(seed=4931){this.state=seed>>>0||1;}
@@ -30,7 +36,7 @@ SC.math = (() => {
   }
   const rayCircle=(ox,oz,dx,dz,cx,cz,r)=>{const x=ox-cx,z=oz-cz,b=x*dx+z*dz,cc=x*x+z*z-r*r,d=b*b-cc;if(d<0)return Infinity;const t=-b-Math.sqrt(d);return t>=0?t:(cc<0?0:Infinity);};
   const rayBox3=(o,d,min,max)=>{let lo=0,hi=Infinity;for(let i=0;i<3;i++){if(Math.abs(d[i])<1e-9){if(o[i]<min[i]||o[i]>max[i])return Infinity;continue;}let a=(min[i]-o[i])/d[i],b=(max[i]-o[i])/d[i];if(a>b)[a,b]=[b,a];lo=Math.max(lo,a);hi=Math.min(hi,b);if(lo>hi)return Infinity;}return lo;};
-  return {clamp,lerp,wrap,V,M,RNG,dist,rayCircle,rayBox3,DEG:Math.PI/180};
+  return {clamp,lerp,wrap,V,M,RNG,controlVector,dist,rayCircle,rayBox3,DEG:Math.PI/180};
 })();
 SC.constants=Object.freeze({wheelbase:.768,rearTrack:.762,frontTrack:.516,rearRadius:.129,frontRadius:.066,halfWidth:.445,halfLength:.64,bodyOffset:.33,frontOffset:.944,motorW:250,noLoadRPM:120,steerMax:38*Math.PI/180,step:1/60});
 SC.defaults=Object.freeze({terrain:'flat',slope:5,density:'few',pillars:true,people:true,boxes:true,light:'sun',sunElevation:38,sunAzimuth:135,followDistance:1.8,maxSpeed:1.15,userSpeed:1.05,cargo:15,seed:4931,lidarRange:12,uwbRange:18,uwbFov:180,tofRange:4,noise:1,peopleSpeed:.65,boxMass:6,showLidar:true,showUwb:true,showTof:true,showPath:true,showMap:false,showTruth:false,quality:'high'});

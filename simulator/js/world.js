@@ -20,19 +20,24 @@ SC.World = class World {
     for(let k=0;k<2;k++)for(const o of this.objects){if(o.type==='box'){let qx=SC.math.clamp(nx,o.x-o.w/2,o.x+o.w/2),qz=SC.math.clamp(nz,o.z-o.d/2,o.z+o.d/2),dd=Math.hypot(nx-qx,nz-qz);if(dd<.25){let ux=(nx-qx)/(dd||1),uz=(nz-qz)/(dd||1);if(dd<1e-5){ux=nx>=o.x?1:-1;uz=0;}nx+=ux*(.25-dd);nz+=uz*(.25-dd);}}
       else {let ax=nx-o.x,az=nz-o.z,dd=Math.hypot(ax,az),r=o.r+.25;if(dd<r){nx+=ax/(dd||1)*(r-dd);nz+=az/(dd||1)*(r-dd);}}
     }
-    user.vx=(nx-user.x)/dt;user.vz=(nz-user.z)/dt;user.x=nx;user.z=nz;if(Math.hypot(user.vx,user.vz)>.03){user.yaw=Math.atan2(user.vx,user.vz);user.phase+=Math.hypot(user.vx,user.vz)*dt*7.5;}user.y=this.height(nx,nz);
+    user.vx=(nx-user.x)/dt;user.vz=(nz-user.z)/dt;user.x=nx;user.z=nz;if(Math.hypot(user.vx,user.vz)>.03){user.yaw=Math.atan2(user.vx,user.vz);user.phase+=Math.hypot(user.vx,user.vz)*dt*SC.gait.phasePerMeter;}user.y=this.height(nx,nz);
   }
   step(dt,user,cart){for(const o of this.objects){if(o.type==='pillar')continue;
       if(o.type==='person'){let dx=o.goal.x-o.x,dz=o.goal.z-o.z,len=Math.hypot(dx,dz);if(len<.5){o.goal={x:this.rng.between(-7.8,7.8),z:this.rng.between(-1,16)};dx=o.goal.x-o.x;dz=o.goal.z-o.z;len=Math.hypot(dx,dz);}let vx=dx/(len||1)*o.preferredSpeed,vz=dz/(len||1)*o.preferredSpeed;
         for(const other of [...this.objects,user]){if(other===o)continue;let ax=o.x-other.x,az=o.z-other.z,d=Math.hypot(ax,az),r=(other.r||.28)+.28;if(d<r+1&&d>.001){let force=SC.math.clamp((r+.85-d)*1.3,0,1.8);vx+=ax/d*force;vz+=az/d*force;}}
         const cx=cart.x+Math.sin(cart.yaw)*.33,cz=cart.z+Math.cos(cart.yaw)*.33,dc=Math.hypot(o.x-cx,o.z-cz);if(dc<1.65){vx+=(o.x-cx)/(dc||1)*(1.65-dc)*1.5;vz+=(o.z-cz)/(dc||1)*(1.65-dc)*1.5;}
-        let cap=o.preferredSpeed*1.25,s=Math.hypot(vx,vz);if(s>cap){vx*=cap/s;vz*=cap/s;}o.vx=SC.math.lerp(o.vx,vx,Math.min(1,dt*3));o.vz=SC.math.lerp(o.vz,vz,Math.min(1,dt*3));o.yaw=Math.atan2(o.vx,o.vz);o.phase+=Math.hypot(o.vx,o.vz)*dt*7;
+        let cap=o.preferredSpeed*1.25,s=Math.hypot(vx,vz);if(s>cap){vx*=cap/s;vz*=cap/s;}o.vx=SC.math.lerp(o.vx,vx,Math.min(1,dt*3));o.vz=SC.math.lerp(o.vz,vz,Math.min(1,dt*3));
       }else{let v=Math.hypot(o.vx,o.vz);if(v>.002){let drag=Math.max(0,1-2.2*dt/v);o.vx*=drag;o.vz*=drag;}else{o.vx=o.vz=0;}}
       let nx=SC.math.clamp(o.x+o.vx*dt,this.xMin+.6,this.xMax-.6),nz=SC.math.clamp(o.z+o.vz*dt,this.zMin+.6,this.zMax-.6);
       if(o.type==='box'&&Math.abs(this.height(nx,nz)-this.height(o.x,o.z))>.025){o.vx=o.vz=0;continue;}
       for(const p of this.objects){if(p===o||p.type==='person')continue;let rr=(o.type==='person'?.28:o.r)+p.r,dd=Math.hypot(nx-p.x,nz-p.z);if(dd<rr&&dd>.0001){nx+=(nx-p.x)/dd*(rr-dd);nz+=(nz-p.z)/dd*(rr-dd);if(o.type==='box'){o.vx*=.1;o.vz*=.1;}}}
       // Non-penetration for pedestrian contact. The controller still sees unlabelled range returns.
       if(o.type==='person'&&this.localRectDistance(nx,nz,cart)<o.r+.02){nx=o.x;nz=o.z;o.vx=o.vz=0;}
+      if(o.type==='person'){
+        o.vx=(nx-o.x)/dt;o.vz=(nz-o.z)/dt;
+        const actualSpeed=Math.hypot(o.vx,o.vz);
+        if(actualSpeed>.03){o.yaw=Math.atan2(o.vx,o.vz);o.phase+=actualSpeed*dt*SC.gait.phasePerMeter;}
+      }
       o.x=nx;o.z=nz;o.y=this.height(nx,nz);
     }}
   /** Ray query is used only by the sensor and physics layers, never by the planner. */

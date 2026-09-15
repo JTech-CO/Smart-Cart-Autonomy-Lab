@@ -1,4 +1,4 @@
-"""1.1.1 actual DOM keyboard/pointer and rendered-state regressions.
+"""1.2.0 actual DOM keyboard/pointer and rendered-state regressions.
 
 Requires Playwright/Chromium only for QA. DISPLAY=:99 may be needed by ANGLE.
 Default delivery-host mode injects the complete local page because URL entry
@@ -40,10 +40,11 @@ with sync_playwright() as pw:
         args=['--no-sandbox','--disable-dev-shm-usage','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader'])
     p=browser.new_page(viewport={'width':1440,'height':1000},device_scale_factor=1);start(p)
     for a in [0,math.pi/2,math.pi,-math.pi/2]:
-        for key,axis,sign in [('ArrowLeft','x',-1),('ArrowRight','x',1),('ArrowUp','y',-1),('ArrowDown','y',1)]:
-            reset(p);camera(p,a);before=project(p);p.locator('#scene').focus();p.evaluate('SC.app.pause(false)')
-            p.keyboard.down(key);p.wait_for_timeout(340);p.keyboard.up(key);p.evaluate('SC.app.pause(true)');after=project(p)
-            d=after[axis]-before[axis];check(f'{key} moves in its screen direction at orbit {round(a*180/math.pi)} deg',d*sign>3,{'pixels':d})
+        for key,axis,sign in [('ArrowLeft','x',1),('ArrowRight','x',-1),('ArrowUp','z',1),('ArrowDown','z',-1)]:
+            reset(p);camera(p,a);before=p.evaluate('({...SC.app.sim.user})');p.locator('#scene').focus();p.evaluate('SC.app.pause(false)')
+            started=p.evaluate('SC.app.sim.time');p.keyboard.down(key);p.wait_for_function('t=>SC.app.sim.time>=t',arg=started+.35,timeout=15000);p.keyboard.up(key);p.evaluate('SC.app.pause(true)');after=p.evaluate('({...SC.app.sim.user})')
+            d=after[axis]-before[axis];other='z' if axis=='x' else 'x'
+            check(f'{key} moves on its fixed terrain axis at orbit {round(a*180/math.pi)} deg',d*sign>.15 and abs(after[other]-before[other])<1e-10,{'metres':d})
     reset(p);p.locator('#scene').focus();p.evaluate('SC.app.view.setCamera("follow");SC.app.view.render(0)')
     before=p.evaluate('({a:SC.app.view.azimuth,e:SC.app.view.elevation})');box=p.locator('#scene').bounding_box()
     x=box['x']+box['width']*.48;y=box['y']+box['height']*.40
@@ -51,10 +52,10 @@ with sync_playwright() as pw:
     after=p.evaluate('({a:SC.app.view.azimuth,e:SC.app.view.elevation,drag:SC.app.view.drag,focus:document.activeElement.id})')
     check('Real right/up mouse drag increases azimuth/elevation and ends capture',after['a']>before['a']+.5 and after['e']>before['e']+.25 and after['drag'] is None,after)
     check('Orbit drag returns keyboard focus to the simulation',after['focus']=='scene')
-    a=after['a'];camera(p,a);before=project(p);p.keyboard.down('ArrowLeft');p.evaluate('SC.app.pause(false)')
+    a=after['a'];camera(p,a);before=p.evaluate('({...SC.app.sim.user})');p.keyboard.down('ArrowLeft');p.evaluate('SC.app.pause(false)')
     # Pause clears keys; press after resuming, as a human does.
-    p.keyboard.up('ArrowLeft');p.keyboard.down('ArrowLeft');p.wait_for_timeout(340);p.keyboard.up('ArrowLeft');p.evaluate('SC.app.pause(true)');after=project(p)
-    check('Left movement remains screen-left after a real orbit drag',after['x']<before['x']-3)
+    p.keyboard.up('ArrowLeft');p.keyboard.down('ArrowLeft');p.wait_for_timeout(340);p.keyboard.up('ArrowLeft');p.evaluate('SC.app.pause(true)');after=p.evaluate('({...SC.app.sim.user})')
+    check('Left movement remains fixed +X after a real orbit drag',after['x']>before['x']+.15 and abs(after['z']-before['z'])<1e-10)
     reset(p);camera(p,0);p.locator('#pauseBtn').focus();p.keyboard.press('Space');before=project(p)
     p.keyboard.down('ArrowLeft');p.wait_for_timeout(340);p.keyboard.up('ArrowLeft');p.evaluate('SC.app.pause(true)');after=project(p)
     check('Arrow movement is not swallowed by the focused Pause button',after['x']<before['x']-3)
@@ -85,14 +86,14 @@ with sync_playwright() as pw:
     # Real browser touch dispatch at the visible direction button, not a call
     # to Simulation.setInput. It generates the app's pointer/capture events.
     mobile=browser.new_page(viewport={'width':390,'height':844},is_mobile=True,has_touch=True,device_scale_factor=1);start(mobile);reset(mobile);camera(mobile,math.pi/2)
-    mobile.locator('[data-dir=left]').scroll_into_view_if_needed();b=mobile.locator('[data-dir=left]').bounding_box();before=project(mobile)
+    mobile.locator('[data-dir=left]').scroll_into_view_if_needed();b=mobile.locator('[data-dir=left]').bounding_box();before=mobile.evaluate('({...SC.app.sim.user})')
     mobile.evaluate('SC.app.pause(false)');session=mobile.context.new_cdp_session(mobile)
     session.send('Input.dispatchTouchEvent',{'type':'touchStart','touchPoints':[{'x':b['x']+b['width']/2,'y':b['y']+b['height']/2}]})
-    mobile.wait_for_timeout(360);session.send('Input.dispatchTouchEvent',{'type':'touchEnd','touchPoints':[]});mobile.wait_for_timeout(60);mobile.evaluate('SC.app.pause(true)');after=project(mobile)
-    check('Real mobile touch-left moves screen-left after a 90-degree camera turn',after['x']<before['x']-3,{'pixels':after['x']-before['x']})
+    mobile.wait_for_timeout(360);session.send('Input.dispatchTouchEvent',{'type':'touchEnd','touchPoints':[]});mobile.wait_for_timeout(60);mobile.evaluate('SC.app.pause(true)');after=mobile.evaluate('({...SC.app.sim.user})')
+    check('Real mobile touch-left moves fixed +X after a 90-degree camera turn',after['x']>before['x']+.15 and abs(after['z']-before['z'])<1e-10,{'metres':after['x']-before['x']})
     check('Real touch release clears movement and capture state',mobile.evaluate('SC.app.sim.input.x===0&&SC.app.sim.input.z===0&&document.querySelectorAll("[data-dir].active").length===0'))
     check('No browser script or GL errors in five-defect integration tests',not errors,errors)
-    data={'suite':'1.1.1 five-defect browser regression','version':'1.1.1','executedAt':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'browser':browser.version,
+    data={'suite':'1.2.0 five-defect browser regression','version':'1.2.0','executedAt':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'browser':browser.version,
       'mode':'static URL' if os.environ.get('SC_TEST_URL') else 'about:blank source injection; not URL-entry E2E',
       'passed':sum(r['status']=='PASS' for r in rows),'failed':sum(r['status']=='FAIL' for r in rows),'tests':rows,'remotePagesDeployed':False}
     (ROOT/'tests/bugfix-browser-results.json').write_text(json.dumps(data,ensure_ascii=False,indent=2));print('RESULT',data['passed'],data['failed'],flush=True);browser.close()
