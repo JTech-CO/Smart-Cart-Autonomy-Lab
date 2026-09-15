@@ -1,0 +1,37 @@
+name: Deploy Smart Cart Simulator
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'simulator/**'
+      - 'tests/**'
+      - '.github/workflows/deploy-simulator.yml'
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: smart-cart-pages
+  cancel-in-progress: true
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Core regression tests
+        run: |
+          node tests/core.test.cjs
+          node tests/bugfix.test.cjs
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Upload static simulator only
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: simulator
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
