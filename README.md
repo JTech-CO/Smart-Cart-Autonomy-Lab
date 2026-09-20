@@ -2,7 +2,7 @@
 
 **Version 1.2.0** · An interactive, sensor-driven smart-cart simulation. Static HTML, CSS, classic JavaScript and WebGL 2. No backend, build step, account or CDN.
 
-[한국어](README-KR.md) · [Open the simulator](<https://jtech-co.github.io/Smart-Cart-Autonomy-Lab-Jev/simulator/index.html>) · [Changelog](simulator/docs/CHANGELOG.md) · [Verification](simulator/docs/QA.md)
+[한국어](README-KR.md) · [Open the simulator](<https://jtech-co.github.io/Smart-Cart-Autonomy-Lab/simulator/index.html>) · [Changelog](simulator/docs/CHANGELOG.md) · [Verification](simulator/docs/QA.md)
 
 ![Smart Cart Autonomy Lab 1.2.0](simulator/assets/preview-desktop.png)
 
