@@ -2,7 +2,7 @@
 
 **버전 1.2.0** · 사용자를 직접 움직이며 센서 기반 스마트카트의 추종·회피·정지를 확인하는 웹 시뮬레이터입니다. HTML·CSS·JavaScript·WebGL 2만 사용하며 백엔드, 빌드, 계정, 외부 CDN이 필요하지 않습니다.
 
-[English](README.md) · [시뮬레이터 열기](simulator/index.html) · [변경 기록](simulator/docs/CHANGELOG-KR.md) · [검증 보고서](simulator/docs/QA-KR.md)
+[English](README.md) · [시뮬레이터 열기](<https://jtech-co.github.io/Smart-Cart-Autonomy-Lab-Jev/simulator/index.html>) · [변경 기록](simulator/docs/CHANGELOG-KR.md) · [검증 보고서](simulator/docs/QA-KR.md)
 
 ![Smart Cart Autonomy Lab 1.2.0](simulator/assets/preview-desktop.png)
 
